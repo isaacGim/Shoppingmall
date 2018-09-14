@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.board">
+	<!--  Notice board  -->
+	<!-- 공지사항 글 쓰기 -->
+	<insert id="insertNotice" parameterType="noticeDTO">
+		INSERT INTO notice VALUES
+		(
+		#{notice_num }, #{notice_subject }, #{notice_content },
+		#{notice_writer },#{notice_hit  },#{notice_date  }
+		)
+	</insert>
+	
+	<!-- 공지사항 조회수 증가 -->
+	<update id="updateNoticeHit" parameterType="int">
+		UPDATE notice SET notice_hit=notice_hit+1 WHERE notice_num=#{notice_num}
+	</update>
+	
+	<!-- 공지사항 글 수정 -->
+	<update id="updateNotice" parameterType="noticeDTO">
+		UPDATE notice SET 
+		notice_subject=#{notice_subject}, 
+		notice_content=#{notice_content}, 
+		notice_writer=#{notice_writer} 
+		WHERE notice_num=#{notice_num}
+	</update>
+	
+	<!-- 공지사항 글 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE FROM notice WHERE notice_num = #{notice_num}
+	</delete>
+	
+	<!--  select 문 -->
+	<!-- 공지사항 게시판 목록 보기 -->
+	<select id="noticeList" parameterType="java.util.Map" resultType="noticeDTO">
+		<![CDATA[select notice_num, notice_subject, notice_content, 
+		 notice_writer, notice_hit, notice_date, 
+		to_char(notice_date, 'YYYY.MM.DD') as notice_date from  
+		(select rownum rn, tt.* from
+		(select * from notice order by notice_num desc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select> 
+	
+	<!-- 공지사항 글 상세보기 -->
+	<select id="noticeView" parameterType="int" resultType="noticeDTO">
+		SELECT * FROM notice WHERE notice_num=#{notice_num}
+	</select>
+	
+	<!-- 공지사항 총 글 수  얻어오기-->	
+	<select id="getNoticeTotalA" resultType="int">
+		SELECT count(*) FROM notice
+	</select>
+	
+
+	
+	<!--  Q & A board  -->
+	<!-- Q&A 글쓰기 -->
+	<insert id="insertQna" parameterType="board_qnaDTO">
+		INSERT INTO board_qna VALUES
+		(
+		#{board_qna_num }, #{board_qna_subject }, #{board_qna_content },
+		#{board_qna_img }, #{board_qna_writer }, 
+		#{board_qna_ref}, #{board_qna_lev}, #{board_qna_seq}, 
+		#{board_qna_date}
+		)
+	</insert>
+	
+	<!-- Q&A 글 수정 -->
+	<update id="updateQna" parameterType="board_qnaDTO">
+		UPDATE board_qna SET 
+		board_qna_subject=#{board_qna_subject}, 
+		board_qna_content =#{board_qna_content }, 
+		board_qna_img=#{board_qna_img },
+		board_qna_writer=#{board_qna_writer },
+		board_qna_date=#{board_qna_date }
+		WHERE board_qna_num=#{board_qna_num }
+	</update>
+	
+	<!-- Q&A 글 삭제 -->
+	<delete id="deleteQna" parameterType="int">
+		DELETE FROM board_qna WHERE board_qna_num = #{board_qna_num}
+	</delete>
+	
+	<!-- Q&A lev , re_seq     // seq 값 증가 -->
+	<update id="updateQna_reSeq" parameterType="java.util.Map" >
+		update board_qna set board_qna_seq=board_qna_seq+1 where board_qna_ref=#{board_qna_ref } and board_qna_seq>=#{board_qna_seq }
+	</update>
+	
+	<!--  select 문 -->
+	<!-- Q&A 게시판 목록 보기 -->
+	<select id="qnaList" parameterType="java.util.Map" resultType="board_qnaDTO">
+		<![CDATA[select * from  
+		(select rownum rn, tt.* from
+		(select * from board_qna order by board_qna_ref desc, board_qna_seq) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select> 
+
+	<!-- Q&A 글 상세보기 -->
+	<select id="qnaView" parameterType="int" resultType="board_qnaDTO">
+		SELECT * FROM board_qna WHERE board_qna_num=#{board_qna_num}
+	</select>
+	
+	<!-- Q&A 총 글 수  얻어오기-->	
+	<select id="getQnaTotalA" resultType="int">
+		SELECT count(*) FROM board_qna
+	</select>
+		
+	<!--  Review board  -->
+	<!-- Review 글 쓰기 -->
+	<insert id="insertReview" parameterType="reviewDTO">
+		INSERT INTO review VALUES
+		(
+		#{review_num }, #{review_subject }, #{review_content },
+		#{review_img }, #{review_writer }, 
+		#{review_grade}, #{review_like},
+		#{review_ref}, #{review_lev}, #{review_seq}, 
+		#{review_date}
+		)
+	</insert>
+	
+	<!-- Review 글 수정 -->
+	<update id="updateReview" parameterType="reviewDTO">
+		UPDATE review SET 
+		review_subject=#{review_subject}, 
+		review_content=#{review_content},
+		review_img=#{review_img }, 
+		review_writer=#{review_writer },
+		review_grade=#{review_grade },
+		WHERE board_qna_num=#{board_qna_num }
+	</update>
+	
+	<!-- Review 글 삭제 -->
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM review WHERE review_num=#{review_num}
+	</delete>
+	
+	<!-- Review lev , re_seq     // seq 값 증가 -->
+	<update id="updateReview_reSeq" parameterType="java.util.Map" >
+		update review set review_seq =review_seq +1 where review_ref =#{review_ref  } and review_seq >=#{review_seq  }
+	</update>
+	
+	<!--  select 문 -->
+	<!-- Review 게시판 목록 보기 -->
+	<select id="reviewList" parameterType="java.util.Map" resultType="reviewDTO">
+		<![CDATA[select * from  
+		(select rownum rn, tt.* from
+		(select * from review order by review_ref desc, review_seq asc ) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select> 
+	
+	<!-- Q&A 글 상세보기 -->
+	<select id="reviewView" parameterType="int" resultType="reviewDTO">
+		SELECT * FROM review WHERE review_num=#{review_num}
+	</select>
+	
+	<!-- Q&A 총 글 수  얻어오기-->	
+	<select id="getReviewTotalA" resultType="int">
+		SELECT count(*) FROM review
+	</select>
+	
+	
+</mapper>
