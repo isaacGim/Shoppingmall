@@ -26,7 +26,7 @@ public class Board_qnaDAO { // qna
 		return sqlSession.delete("mybatis.board.deleteQna", board_qna_num);
 	}
 	
-	// re seq 값 증가
+	// re seq 
 	
 	// 게시판 목록 보기
 	
