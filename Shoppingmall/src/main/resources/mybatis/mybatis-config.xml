@@ -17,10 +17,10 @@
 		
 		<!-- 상품 -->
 		<typeAlias type="item.bean.ItemDTO" alias="itemDTO"/>
-		<!-- 주문항목 -->
-		<typeAlias type="order_list.bean.Order_listDTO" alias="Order_listDTO"/>
 		<!-- 주문 -->
 		<typeAlias type="orders.bean.OrdersDTO" alias="ordersDTO"/>
+		<!-- 주문항목 -->
+		<typeAlias type="order_list.bean.Order_listDTO" alias="order_listDTO"/>
 	</typeAliases>
 	
 	<!-- Mapper 설정 -->
@@ -28,6 +28,9 @@
 		<mapper resource="mybatis/SignUp-Mapper.xml" />	<!-- 회원정보 -->
 		<mapper resource="mybatis/Login-Mapper.xml" />	<!-- 로그인 -->
 		<mapper resource="mybatis/Board-Mapper.xml" />	<!-- 각종 게시판 -->
+		<mapper resource="mybatis/Item-Mapper.xml"/> <!-- 아이템 게시판 -->
+		<mapper resource="mybatis/Orders-Mapper.xml"/>	<!-- 구매, 주문 -->
+		<mapper resource="mybatis/Order_list-Mapper.xml"/>	<!-- 구매, 주문 항목 -->
 	</mappers>
 	
 </configuration>

@@ -10,10 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Shop_memberController {
-	@Autowired
-	private Shop_memberService memberService;
 	
-	@RequestMapping(value="/main/index.do")
+	@Autowired
+	private Shop_memberServiceImpl memberService;
+	
+	@RequestMapping(value="/main/index")
 	public ModelAndView index(HttpServletRequest request) {	// 파일 이름과 함수 이름 같게 수정할 것
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:../main/index.jsp");

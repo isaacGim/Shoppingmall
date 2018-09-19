@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
     
     <!-- Uncomment and add your base-package here:
          <context:component-scan
@@ -13,6 +16,30 @@
 	<context:component-scan base-package="shop_member.controller.*"/>
 	<context:component-scan base-package="shop_member.bean.*"/>
 	<context:component-scan base-package="shop_member.dao.*"/>
+	<!-- board_qna.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="board_qna.controller.*"/>
+	<context:component-scan base-package="board_qna.bean.*"/>
+	<context:component-scan base-package="board_qna.dao.*"/>
+	<!-- notice.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="notice.controller.*"/>
+	<context:component-scan base-package="notice.bean.*"/>
+	<context:component-scan base-package="notice.dao.*"/>
+	<!-- review.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="review.controller.*"/>
+	<context:component-scan base-package="review.bean.*"/>
+	<context:component-scan base-package="review.dao.*"/>
+	<!-- item.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="item.controller.*"/>
+	<context:component-scan base-package="item.bean.*"/>
+	<context:component-scan base-package="item.dao.*"/>
+	<!-- orders.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="orders.controller.*"/>
+	<context:component-scan base-package="orders.bean.*"/>
+	<context:component-scan base-package="orders.dao.*"/>
+	<!-- order_list.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
+	<context:component-scan base-package="order_list.controller.*"/>
+	<context:component-scan base-package="order_list.bean.*"/>
+	<context:component-scan base-package="order_list.dao.*"/>
 	
 	
 	<context:property-placeholder location="classpath:spring/db.properties"/>
@@ -33,4 +60,9 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

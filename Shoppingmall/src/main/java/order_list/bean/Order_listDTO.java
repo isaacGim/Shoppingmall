@@ -1,7 +1,7 @@
 package order_list.bean;
 
 public class Order_listDTO {
-	private int order_list_num;			// 주문항목번호 primary key
+	private int order_list_num;			// 주문항목번호 primary key, sql
 	private int order_list_quantity;	// 수량
 	private int order_list_price;		// 가격
 	private int item_index;				// 상품코드 F(item)

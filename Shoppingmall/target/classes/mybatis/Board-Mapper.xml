@@ -8,8 +8,8 @@
 	<insert id="insertNotice" parameterType="noticeDTO">
 		INSERT INTO notice VALUES
 		(
-		#{notice_num }, #{notice_subject }, #{notice_content },
-		#{notice_writer },#{notice_hit  },#{notice_date  }
+		notice_num.nextval, #{notice_subject }, #{notice_content },
+		#{notice_writer }, 0, sysdate
 		)
 	</insert>
 	
@@ -60,10 +60,9 @@
 	<insert id="insertQna" parameterType="board_qnaDTO">
 		INSERT INTO board_qna VALUES
 		(
-		#{board_qna_num }, #{board_qna_subject }, #{board_qna_content },
+		board_qna_num.nextval, #{board_qna_subject }, #{board_qna_content },
 		#{board_qna_img }, #{board_qna_writer }, 
-		#{board_qna_ref}, #{board_qna_lev}, #{board_qna_seq}, 
-		#{board_qna_date}
+		#{board_qna_ref}, #{board_qna_lev}, #{board_qna_seq}, sysdate
 		)
 	</insert>
 	
@@ -74,7 +73,6 @@
 		board_qna_content =#{board_qna_content }, 
 		board_qna_img=#{board_qna_img },
 		board_qna_writer=#{board_qna_writer },
-		board_qna_date=#{board_qna_date }
 		WHERE board_qna_num=#{board_qna_num }
 	</update>
 	
@@ -112,11 +110,10 @@
 	<insert id="insertReview" parameterType="reviewDTO">
 		INSERT INTO review VALUES
 		(
-		#{review_num }, #{review_subject }, #{review_content },
+		review_num.nextval, #{review_subject }, #{review_content },
 		#{review_img }, #{review_writer }, 
-		#{review_grade}, #{review_like},
-		#{review_ref}, #{review_lev}, #{review_seq}, 
-		#{review_date}
+		#{review_grade}, 0,
+		#{review_ref}, #{review_lev}, #{review_seq}, sysdate
 		)
 	</insert>
 	
@@ -150,12 +147,12 @@
 		where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select> 
 	
-	<!-- Q&A 글 상세보기 -->
+	<!-- Review 글 상세보기 -->
 	<select id="reviewView" parameterType="int" resultType="reviewDTO">
 		SELECT * FROM review WHERE review_num=#{review_num}
 	</select>
 	
-	<!-- Q&A 총 글 수  얻어오기-->	
+	<!-- Review 총 글 수  얻어오기-->	
 	<select id="getReviewTotalA" resultType="int">
 		SELECT count(*) FROM review
 	</select>

@@ -7,6 +7,7 @@ public class ItemDTO {
 	private String item_detail_category;	// 상품상세분류
 	private String item_name;		// 상품명
 	private String item_img;		// 상품 이미지
+	private String item_detail_img; // 상품 상세 이미지
 	private String item_content;	// 상품 설명
 	private String item_brand;		// 브랜드명
 	private int item_price;			// 가격
@@ -15,6 +16,12 @@ public class ItemDTO {
 	private String item_size;		// size
 	private String item_date;		// 등록일
 	
+	public String getItem_detail_img() {
+		return item_detail_img;
+	}
+	public void setItem_detail_img(String item_detail_img) {
+		this.item_detail_img = item_detail_img;
+	}
 	public int getItem_index() {
 		return item_index;
 	}
