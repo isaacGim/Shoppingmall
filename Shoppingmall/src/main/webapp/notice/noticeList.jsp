@@ -14,10 +14,11 @@
 	$(function(){
 		$(".noticeSubject").click(function(){
 			var notice_num = $(this).parents('tr').find(".no").text();
-			location.href="/notice/noticeView?no=" + notice_num;
+			location.href="/Shoppingmall/notice/noticeView?no="+notice_num +"&pg=1";
 		});
+		
 		$(".noticeWrite").click(function(){
-			location.href="/Project2/main/index.jsp?req=noticeWriteForm";
+			location.href="/Shoppingmall/notice/noticeWriteform";
 		});
 	});
 </script>
@@ -50,9 +51,37 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
 		<div class="btnArea "><!-- 관리자 계정으로 로그인 했을때만   -->
+			<c:if test="${sessionScope.member_id == 'hong'}">
 				<a id="link" href="#none"><span class="noticeWrite" id="noticeWrite">글쓰기</span></a>
+       		</c:if>
        	</div>
+       	
+       	
+<!-- paging -->
+	<div id="pageList">
+	<c:if test="${pg > 5 }">
+		[<a class="paging" href="/Shoppingmall/notice/noticeList?pg=${startPage - 1 }">이전</a>]
+	</c:if>
+	
+	<c:forEach var="a" begin="${startPage }" end="${endPage }" step="1">
+		<c:if test="${a == pg}">
+			[<a class="currentPaging" href="/Shoppingmall/notice/noticeList?pg=${a}">${a}</a>]
+		</c:if>
+		<c:if test="${a != pg}">
+			[<a class="paging" href="/Shoppingmall/notice/noticeList?pg=${a}">${a}</a>]
+		</c:if>	
+	</c:forEach>
+	
+	<c:if test="${endPage < totalPage }">
+		[<a class="paging" href="/Shoppingmall/notice/noticeList?pg=${startPage + 1 }">다음</a>]
+	</c:if>
 	</div>
+
+</div>
+    	
+       	
+
 </body>
 </html>

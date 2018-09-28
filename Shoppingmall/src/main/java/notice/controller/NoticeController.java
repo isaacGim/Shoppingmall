@@ -40,16 +40,33 @@ public class NoticeController {
 		modelAndView.setViewName("/main/index.jsp?req=noticeList");
 		return modelAndView;
 	}
-	
+	// 공지사항 보기
 	@RequestMapping("/notice/noticeView")
 	public ModelAndView noticeView(HttpServletRequest request, ModelAndView modelAndView) {
-		System.out.println("ggg");
-		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 
+		int notice_num = Integer.parseInt(request.getParameter("no"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO = noticeService.noticeView(notice_num);
+		noticeService.updateHit(notice_num);
+
+		// 이전 글
+		int prev = notice_num + 1;
+		NoticeDTO prevNoticeDTO = new NoticeDTO();
+		prevNoticeDTO = noticeService.noticeView(prev);
 		
-		modelAndView.addObject(noticeDTO);
+		
+		// 다음 글
+		int next = notice_num - 1;
+		NoticeDTO nextNoticeDTO = new NoticeDTO();
+		nextNoticeDTO = noticeService.noticeView(next);
+		
+		modelAndView.addObject("prevNoticeDTO", prevNoticeDTO);	// 이전 글
+		modelAndView.addObject("nextNoticeDTO", nextNoticeDTO);	// 다음 글
+		
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("noticeDTO", noticeDTO);
 		modelAndView.setViewName("/main/index.jsp?req=noticeView");
 		return modelAndView;
 	}

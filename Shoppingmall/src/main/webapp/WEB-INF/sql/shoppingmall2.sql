@@ -123,9 +123,11 @@ create table shop_member (
   bank_name varchar2(20) not null,    -- ÀºÇà¸í
   account_num varchar2(30) not null    -- °èÁÂ¹øÈ£
 );
+ALTER TABLE shop_member MODIFY (addr2 varchar2(80));
+commit;
 -- Å×ÀÌºí »èÁ¦
 drop table shop_member purge;
-delete from shop_member;
+delete from shop_member where id='kgwug';
 -- Å×ÀÌºí Á¤º¸ È®ÀÎÇÏ±â
 desc shop_member;
 -- µ¥ÀÌÅÍ È®ÀÎÇÏ±â
@@ -137,6 +139,7 @@ insert into shop_member values ('go', '1234', 'a', 'a', '°í±æµ¿', '¼­¿ï', 'Á¾·Î±
 delete from shop_member where id='hong'; 
 -- ÄÃ·³ »èÁ¦ --
 ALTER TABLE shop_member DROP COLUMN email3;
+
 
 
 -------------------------------
@@ -158,9 +161,27 @@ create table item (
  item_date date default sysdate		      -- µî·ÏÀÏ
 );
 -- ½ÃÄö½º	°´Ã¼
+create sequence item_index nocycle nocache;
+drop sequence item_index;  -- ½ÃÄö½º »èÁ¦
+
+commit;
 SELECT * FROM 
- (SELECT * FROM item ORDER BY ROWNUM DESC) 
+(SELECT * FROM item ORDER BY ROWNUM DESC) 
 WHERE ROWNUM = 1;
+
+SELECT *
+FROM (SELECT DISTINCT item_img, item_price, item_name 
+      FROM item)
+WHERE ROWNUM >=1 AND ROWNUM <= 9;
+
+select * from item where rownum >= 2 and rownum <= 3;
+select * from item; 
+select * from (select rownum rn, tt.* from (select * from item) tt) where rn = 2;
+
+select * from
+(select rownum rn, tt.* from 
+(select * from guestbook order by guest_num desc) tt)
+where rn>=1 and rn<=10;
 
 select to_char(item_date, 'YYYY.MM.DD') as item_date from item;
 create sequence item_index nocycle nocache;
@@ -179,8 +200,22 @@ insert into item values (2, 'a', 'tee', '±äÆÈ', 'Æ¼', 'tee.jpg', '', 'Æ¼', 'Æ¼',
 insert into item values (3, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
 insert into item values (4, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
 insert into item values (5, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
-insert into item values (5, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
-insert into item values (5, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (6, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (7, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (8, 'a', 'tee', '±äÆÈ', 'Æ¼', 'tee.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'red', 'large', sysdate);
+insert into item values (9, 'a', 'tee', '±äÆÈ', 'Æ¼', 'tee.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (10, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (11, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (12, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (13, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (14, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (15, 'a', 'tee', '±äÆÈ', 'Æ¼', 'tee.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'red', 'large', sysdate);
+insert into item values (16, 'a', 'tee', '±äÆÈ', 'Æ¼', 'tee.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (17, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (18, 'a', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (19, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (20, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
+insert into item values (21, 'b', 'tee', '±äÆÈ', 'Æ¼¼ÅÃ÷', 'tee2.jpg', '', 'Æ¼', 'Æ¼', 100, 100, 'green', 'large', sysdate);
 
 -- »óÇ° ºÐ·ù --
 select distinct item_img, item_price, item_name from item where item_category = 'tee';
@@ -248,3 +283,9 @@ commit;
 select * from tab;
 -- Å×ÀÌºí ÀÌ¸§ º¯°æ
 alter table order_item rename to orders;
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------

@@ -13,9 +13,10 @@
 
     <mvc:annotation-driven />
     <mvc:resources location="/css/" mapping="/css/**"/>
-    <mvc:resources location="/font/" mapping="/font/**"/>
-    <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources location="/image/" mapping="/image/**"/>
+    <mvc:resources location="/font/" mapping="/font/**"/>
+    <mvc:resources location="/editor/" mapping="/editor/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
     
 	<context:component-scan base-package="shop_member.controller"/>
 	<context:component-scan base-package="board_qna.controller"/>

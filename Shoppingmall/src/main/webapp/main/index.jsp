@@ -221,7 +221,7 @@ var SHOW_DURATION = 200;
 									<span class="bank_st">
 										<b>SC제일은행</b>157-20-155301<br>
 										<b>카카오뱅크</b>3333-01-5132902<br>
-										<strong>예금주 : 김이삭</strong>
+										<strong>예금주 : 김이이삭</strong>
 									</span>
 							</li>
 						</ul>
@@ -399,6 +399,7 @@ var SHOW_DURATION = 200;
 		<c:if test="${param.req=='noticeList'}">
 			<jsp:include page="../notice/noticeList.jsp" />
 		</c:if>
+		
 		<!-- 공지사항 보기 -->
 		<c:if test="${param.req=='noticeView'}">
 			<jsp:include page="../notice/noticeView.jsp" />
