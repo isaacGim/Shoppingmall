@@ -13,7 +13,8 @@
 	//subject 버튼 클릭시 이동 
 	$(function(){
 		$(".noticeSubject").click(function(){
-			location.href="/Project2/main/index.jsp?req=noticeView";
+			var notice_num = $(this).parents('tr').find(".no").text();
+			location.href="/notice/noticeView?no=" + notice_num;
 		});
 		$(".noticeWrite").click(function(){
 			location.href="/Project2/main/index.jsp?req=noticeWriteForm";

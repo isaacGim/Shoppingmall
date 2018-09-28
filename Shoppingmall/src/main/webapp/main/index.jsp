@@ -275,7 +275,7 @@ var SHOW_DURATION = 200;
 					<li><a>민소매</a></li>
 					<li><a>니트</a></li>
 					<li><a>슬림/베이직핏</a></li>
-					<li><a>후드</a></li>
+					<li><a>후 드</a></li>
 				</ul>
 			</li>
 	            <li style="width:94px" class="category4"><a href="" onmouseover="this.innerHTML='셔츠'" onmouseout="this.innerHTML='SHIRTS'">SHIRTS</a>
@@ -394,11 +394,17 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../qna/qnaList.jsp" />
 		</c:if>
 	 -->
-		 
+	 
+		 <!-- 공지사항 목록 -->
 		<c:if test="${param.req=='noticeList'}">
 			<jsp:include page="../notice/noticeList.jsp" />
 		</c:if>
-	
+		<!-- 공지사항 보기 -->
+		<c:if test="${param.req=='noticeView'}">
+			<jsp:include page="../notice/noticeView.jsp" />
+		</c:if>
+		
+		
 		
 	</div>	
 			<div id="footer">

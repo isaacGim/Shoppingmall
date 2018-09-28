@@ -102,13 +102,11 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="/admin/deleteItem", method=RequestMethod.POST)
-	public ModelAndView delete(HttpServletRequest request, ModelAndView modelAndView, 
-			@RequestBody String[] indexArray) {
-//		String[] indexArray = (String[])request.getParameter("indexArray");
-//		int result = itemservice.deleteItemByIndex(index);
-//		System.out.println(index);
-		for(String index : indexArray) System.out.println(index);
-		modelAndView.setViewName("/admin/adminList?pg=1");
-		return modelAndView;
+	public void delete(HttpServletRequest request, @RequestBody List<String> indexArray) {
+		
+		for(String index : indexArray) {
+			System.out.println(index);
+			itemservice.deleteItemByIndex(Integer.parseInt(index));
+		}
 	}
 }

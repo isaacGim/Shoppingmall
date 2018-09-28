@@ -30,55 +30,61 @@
 			});	
 			
 			$.ajax({
-				url : '/Shoppingmall/admin/adminList',
+				url : '/Shoppingmall/admin/deleteItem',
 		        type : 'POST',
 		        data : JSON.stringify(indexArray),
 		        dataType : 'json',
-		        contentType : 'application/json; charset=UTF-8'
+		        contentType : 'application/json; charset=UTF-8',
+		        complete : function() {
+		        	location.reload();	
+		        }
 			});
+			
+			indexArray.splice(0, indexArray.length);
 		});
 	});
 </script>
 </head>
 <body>
 
+
+<div class="example">
 <input type="button" value="등록" onclick="location.href='/Shoppingmall/admin/insertForm'">
 <input type="button" id="delete" value="삭제" onclick="itemDelete()">
-
 <form name="itemList">
-<table id="admin_table" border="1">
+<table id="admin_table" class="board_table">
 	<tr id="tr_top" align="center">
 		<td><input type="checkbox" id="checkboxAll"></td>
-		<td width="30px">No</td>
-		<td width="120px">상품코드</td>
-		<td width="100px">상품분류</td>
-		<td width="100px">상세상품분류</td>
-		<td width="100px">상품명</td>
-		<td width="100px">상품이미지</td>
-		<td width="100px">브랜드명</td>
-		<td width="70px">가격</td>
-		<td width="70px">재고량</td>
-		<td width="70px">color</td>
-		<td width="70px">size</td>
-		<td width="100px">등록일</td>
+		<td width="3%">No</td>
+		<td width="8%">상품코드</td>
+		<td width="8%">상품분류</td>
+		<td width="10%">상세상품분류</td>
+		<td width="8%">상품명</td>
+		<td width="12%">상품이미지</td>
+		<td width="6%">브랜드명</td>
+		<td width="8%">가격</td>
+		<td width="6%">재고량</td>
+		<td width="6%">color</td>
+		<td width="6%">size</td>
+		<td width="13%">등록일</td>
 	</tr>
 	
 	
 <c:forEach var="itemDTO" items="${list }">
 	<tr align="center">
-		<td><input type="checkbox" class="checkbox"></td>
-		<td class="index">${itemDTO.item_index }</td>
-		<td>${itemDTO.item_code }</td>
-		<td>${itemDTO.item_category }</td>
-		<td>${itemDTO.item_detail_category }</td>
-		<td>${itemDTO.item_name }</td>
-		<td>${itemDTO.item_img }</td>
-		<td>${itemDTO.item_brand }</td>
-		<td>${itemDTO.item_price }</td>
-		<td>${itemDTO.item_quantity }</td>
-		<td>${itemDTO.item_color }</td>
-		<td>${itemDTO.item_size }</td>
-		<td>${itemDTO.item_date }</td>
+		<td ><input type="checkbox" class="checkbox"></td>
+		<td class="index" width="3%">${itemDTO.item_index }</td>
+		<td width="8%">${itemDTO.item_code }</td>
+		<td width="8%">${itemDTO.item_category }</td>
+		<td width="10%">${itemDTO.item_detail_category }</td>
+		<td width="8%">${itemDTO.item_name }</td>
+		<td width="12%">${itemDTO.item_img }</td>
+		<td width="6%">${itemDTO.item_brand }</td>
+		<td width="8%">${itemDTO.item_price }</td>
+		<td width="6%">${itemDTO.item_quantity }</td>
+		<td width="6%">${itemDTO.item_color }</td>
+		<td width="6%">${itemDTO.item_size }</td>
+		<td width="13%">${itemDTO.item_date }</td>
 	</tr>
 </c:forEach>	
 </table>
@@ -103,6 +109,9 @@
 	[<a class="paging" href="/Shoppingmall/admin/adminList?pg=${startPage + 1 }">다음</a>]
 </c:if>
 </div>
+
+</div>
+
 	
 
 

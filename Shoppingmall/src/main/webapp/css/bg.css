@@ -495,7 +495,7 @@ ul .product{
 .board_table tr:after {	content: ''; display: block; float: none; clear: both;}
 .board_table thead, tbody, tr {display: block; width: 100%; border-bottom: 1px solid #d1cfcf;}
 .board_table td, th {display: block; float: left; padding: 10px 0;}
-.example{text-align: center; width: 1500px; margin: 0 auto; }
+.example{text-align: center; width: 1500px; margin: 0 auto; margin-bottom: 100px;}
 .board_title{text-align: center; font-size: 15px; font-family: 'Gaegu', cursive;}
 .titleHr{border-bottom: 3px double #d1cfcf;	width: 500px;}
 .boardList{font-family: 'Gaegu', cursive;}

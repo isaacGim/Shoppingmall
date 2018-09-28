@@ -41,5 +41,17 @@ public class NoticeController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/notice/noticeView")
+	public ModelAndView noticeView(HttpServletRequest request, ModelAndView modelAndView) {
+		System.out.println("ggg");
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO = noticeService.noticeView(notice_num);
+		
+		modelAndView.addObject(noticeDTO);
+		modelAndView.setViewName("/main/index.jsp?req=noticeView");
+		return modelAndView;
+	}
 	
 }
