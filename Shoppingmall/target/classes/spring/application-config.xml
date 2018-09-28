@@ -13,33 +13,26 @@
             base-package="org.springframework.samples.service"/>  -->
 	
 	<!-- shop_member.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="shop_member.controller.*"/>
-	<context:component-scan base-package="shop_member.bean.*"/>
-	<context:component-scan base-package="shop_member.dao.*"/>
+	<context:component-scan base-package="shop_member.bean"/>
+	<context:component-scan base-package="shop_member.dao"/>
 	<!-- board_qna.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="board_qna.controller.*"/>
-	<context:component-scan base-package="board_qna.bean.*"/>
-	<context:component-scan base-package="board_qna.dao.*"/>
+	<context:component-scan base-package="board_qna.bean"/>
+	<context:component-scan base-package="board_qna.dao"/>
 	<!-- notice.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="notice.controller.*"/>
-	<context:component-scan base-package="notice.bean.*"/>
-	<context:component-scan base-package="notice.dao.*"/>
+	<context:component-scan base-package="notice.bean"/>
+	<context:component-scan base-package="notice.dao"/>
 	<!-- review.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="review.controller.*"/>
-	<context:component-scan base-package="review.bean.*"/>
-	<context:component-scan base-package="review.dao.*"/>
+	<context:component-scan base-package="review.bean"/>
+	<context:component-scan base-package="review.dao"/>
 	<!-- item.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="item.controller.*"/>
-	<context:component-scan base-package="item.bean.*"/>
-	<context:component-scan base-package="item.dao.*"/>
+	<context:component-scan base-package="item.bean"/>
+	<context:component-scan base-package="item.dao"/>
 	<!-- orders.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="orders.controller.*"/>
-	<context:component-scan base-package="orders.bean.*"/>
-	<context:component-scan base-package="orders.dao.*"/>
+	<context:component-scan base-package="orders.bean"/>
+	<context:component-scan base-package="orders.dao"/>
 	<!-- order_list.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
-	<context:component-scan base-package="order_list.controller.*"/>
-	<context:component-scan base-package="order_list.bean.*"/>
-	<context:component-scan base-package="order_list.dao.*"/>
+	<context:component-scan base-package="order_list.bean"/>
+	<context:component-scan base-package="order_list.dao"/>
 	
 	
 	<context:property-placeholder location="classpath:spring/db.properties"/>

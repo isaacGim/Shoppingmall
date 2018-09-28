@@ -1,22 +1,143 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>ShoppingMall</title>
 <link rel="stylesheet" type="text/css" href="../css/bg.css" />
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
- $(function () {
+var BANNER_INDEX = 1;
+var BANNER_LEN = 0;
+var BANNER_WIDTH = 1702;
+var SHOW_DURATION = 200;
+
+
+	$(function () {
+		
+			$('.category1').hover(function () {
+				$(this).parent().find('.sub1').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub1').slideUp('fast');
+					});	
+				});
+			
+			$('.category2').hover(function () {
+				$(this).parent().find('.sub2').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub2').slideUp('fast');
+					});	
+				});
+		
+			$('.category3').hover(function () {
+				$(this).parent().find('.sub3').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub3').slideUp('fast');
+					});	
+				});
+			
+			$('.category4').hover(function () {
+				$(this).parent().find('.sub4').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub4').slideUp('fast');
+					});	
+				});
+			
+			$('.category5').hover(function () {
+				$(this).parent().find('.sub5').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub5').slideUp('fast');
+					});	
+				});
+			
+			$('.category6').hover(function () {
+				$(this).parent().find('.sub6').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub6').slideUp('fast');
+					});	
+				});
+			
+			$('.category7').hover(function () {
+				$(this).parent().find('.sub7').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub7').slideUp('fast');
+					});	
+				});
+			
+			$('.category8').hover(function () {
+				$(this).parent().find('.sub8').slideDown().show();
+					$(this).hover(function () {
+					}, function () {
+						$(this).find('.sub8').slideUp('fast');
+					});	
+				});
+		
+	        bannerInit();
+	         
+	        $('#full_banner_prev').unbind();
+	        $('#full_banner_prev').bind('click', function(){           
+	            var nIndex = BANNER_INDEX-1;
+	            
+	            showBannerAt(nIndex);
+	        });
+	        $('#full_banner_next').unbind();
+	        $('#full_banner_next').bind('click', function(){
+	        	
+	            var nIndex = BANNER_INDEX+1;
+	             
+	            showBannerAt(nIndex);  
+	        });
+	    function showBannerAt(nIndex){
+	        if (nIndex != BANNER_INDEX) {
+	                                 
+	            var nPosition = -BANNER_WIDTH * nIndex;
+	            
+	            $('.banner_wrapper').stop();
+	            $('.banner_wrapper').animate({
+	                left: nPosition
+	            }, SHOW_DURATION, function(){
+	            	
+	                if(nIndex<1) {
+	                    nIndex = BANNER_LEN;
+	                    nPosition = -BANNER_WIDTH * nIndex;
+	                    $('.banner_wrapper').css({'left': nPosition + 'px'});
+	                }
+	 
+	                if(nIndex>BANNER_LEN) {
+	                    nIndex = 1;
+	                    nPosition = -BANNER_WIDTH * nIndex;
+	                    $('.banner_wrapper').css({'left': nPosition + 'px'});
+	                }
+	 
+	                BANNER_INDEX = nIndex;
+	            });
+	        }
+	    }
+	 
+	    function bannerInit(){
+	        BANNER_LEN = $('.banner_wrapper .page').length;
+	        $('.banner_wrapper').css({'left': -BANNER_WIDTH});
+	    }
+
+
+
+
 		$(window).scroll(function () {
 			if($(this).scrollTop() > 100){
-				$('.main_category').addClass('active');
-				$('.main_category').removeClass('normal');
+				$('.top_category').addClass('active');
+				$('.top_category').removeClass('normal');
 			}else {
-				$('.main_category').addClass('.main_category > ul > li');
-				$('.main_category').removeClass('active');
+				$('.top_category').addClass('.main_category > ul > li');
+				$('.top_category').removeClass('active');
 			}
 			
 			if($(this).scrollTop() > 200){
@@ -30,6 +151,17 @@
 			$('html,body').animate({scrollTop : 0},400);
 			return false;
 		});
+		
+		$('.close').click(function () {
+			$('.bar_right').addClass('close_bar');
+			$(this).css('visibility','hidden');
+		});
+		
+		$('.open').click(function () {
+			$('.close').css('visibility','visible');
+			$('.bar_right').removeClass('close_bar');
+		});
+		
  });
 	</script>
 </head>
@@ -38,8 +170,8 @@
 		<div class="top_info">
 			<div class="top_info_left">
 				<ul>
-					<li style="list-style:none;  width: 85px;" class="list" onmouseover="this.innerHTML='공지사항'" onmouseout="this.innerHTML='NOTICE|'" ><a href="">NOTICE|</a></li>
-					<li style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='문의사항'" onmouseout="this.innerHTML='Q&amp;A|'" ><a href="">Q&amp;A|</a></li>
+					<li onclick="location.href='/Shoppingmall/notice/noticeList?pg=1'" style="list-style:none;  width: 85px;" class="list" onmouseover="this.innerHTML='공지사항'" onmouseout="this.innerHTML='NOTICE|'" >NOTICE|</li>
+					<li onclick="location.href='/Shoppingmall/main/index.jsp?req=qnaList'" style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='문의사항'" onmouseout="this.innerHTML='Q&amp;A|'" >Q&amp;A|</li>
 					<li style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='구매후기'" onmouseout="this.innerHTML='REVIEW|'"><a href="" >REVIEW|</a></li>
 					<li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='자주묻는질문'" onmouseout="this.innerHTML='FAQ|'"><a href="" >FAQ|</a></li>
        			    <li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='도매제휴문의'" onmouseout="this.innerHTML='WHOLESALE|'"><a href="" >WHOLESALE|</a></li>
@@ -47,16 +179,30 @@
 			</div>
 			
 			<div class="top_info_right">
-				<a href="../Shop_member/loginForm.do" class="log">login|</a> 
-					<a href="" class="join" data-hint="+23,500 P">join us|</a>
-					<a href="" class="cart">cart <span class="orderCart">(0)|</span> </a>
-					<a href="">order|</a>
-					<a href="">my page</a>
+				<c:if test="${sessionScope.member_id == 'hong' }">
+					<a href="/Shoppingmall/admin/adminList?pg=1" class="insert" >AdminPage|</a> 
+				</c:if>
+				<c:choose>
+					<c:when test="${sessionScope.member_id == null}">
+						<a href="/Shoppingmall/shop_member/loginForm" class="log" >login|</a> 		
+						<a href="/Shoppingmall/shop_member/joinForm" class="join">join us|</a>	
+					</c:when>
+					<c:when test="${sessionScope.member_id != null}">
+						<a href="/Shoppingmall/shop_member/MyInfo" class="log" >MyInfo|</a> 		
+						<a href="/Shoppingmall/shop_member/logout" class="log" >logout|</a> 
+					</c:when>
+				</c:choose>
+				<a href="" class="cart">cart <span class="orderCart">(0)|</span> </a>
+				<a href="">order|</a>
 			</div>
 		</div>
 		
 		<div class="top_banner">
-			<h1 ><a href=""><img alt="리멤버클릭" src="../image/top_logo.png"onmouseover="this.src='../image/top_logo_1.png'" onmouseout="this.src='../image/top_logo.png'"></a></h1>
+			<h1 >
+				<a href="../main/index">
+					<img alt="리멤버클릭" src="../image/top_logo.png"onmouseover="this.src='../image/top_logo_1.png'" onmouseout="this.src='../image/top_logo.png'">
+				</a>
+			</h1>
 			
 			<div class="top_banner_helpInfo">
 						<ul>
@@ -64,8 +210,8 @@
 								<a href="" class="infoTip1">call center</a>
 									<span class="call_st">
 										<b>1688-9856</b><br>
-										mon - fri 10:30 - 18:30<br>
-										lunch time 13:00 - 14:00<br>
+										mon - fri <br>10:30 - 18:30<br>
+										lunch time <br>13:00 - 14:00<br>
 										<strong>sat, sun, holiday off</strong>
 									</span>
 							</li>
@@ -96,409 +242,164 @@
 	
 	
 	<div id="top_category" class="top_category">
-	<div class="main_category">
-		<ul>
-			<li style="width:114px" class="category"><a href="" onmouseover="this.innerHTML='베스트아이템'" onmouseout="this.innerHTML='BEST ITEM'">BEST ITEM</a></li>
-			<li style="width:114px" class="category"><a href="" onmouseover="this.innerHTML='아웃웨어'" onmouseout="this.innerHTML='OUTWEAR'">OUTWEAR</a></li>
-			<li style="width:72px" class="category"><a href="" onmouseover="this.innerHTML='티'" onmouseout="this.innerHTML='TEE'">TEE</a></li>
-            <li style="width:94px" class="category"><a href="" onmouseover="this.innerHTML='셔츠'" onmouseout="this.innerHTML='SHIRTS'">SHIRTS</a></li>
-            <li style="width:90px" class="category"><a href="" onmouseover="this.innerHTML='팬츠'" onmouseout="this.innerHTML='PANTS'">PANTS</a></li>
-            <li style="width:76px" class="category"><a href="" onmouseover="this.innerHTML='가방'" onmouseout="this.innerHTML='BAG'">BAG</a></li>
-            <li style="width:91px" class="category"><a href="" onmouseover="this.innerHTML='신발'" onmouseout="this.innerHTML='SHOES'">SHOES</a></li>
-            <li style="width:123px" class="category"><a href="" onmouseover="this.innerHTML='악세사리'" onmouseout="this.innerHTML='ACCESSORY'">ACCESSORY</a></li>
-            <li style="width:115px" class="category"><a href="" onmouseover="this.innerHTML='신상5%할인'" onmouseout="this.innerHTML='NEW'">NEW</a></li>
-            <li style="width:80px" class="category"><a href="" onmouseover="this.innerHTML='세일'" onmouseout="this.innerHTML='SALE'">SALE</a></li>
-		</ul>
-	</div>
+		<div class="main_category">
+			<ul>
+			<li style="width:114px" class="category1"><a href="" onmouseover="this.innerHTML='베스트아이템'" onmouseout="this.innerHTML='BEST ITEM'">BEST ITEM</a>
+				<ul class=" sub sub1">
+					<li><a>아웃웨어</a></li>
+					<li><a>팬츠</a></li>
+					<li><a>셔츠</a></li>
+					<li><a>티</a></li>
+					<li><a>신발</a></li>
+					<li><a>악세사리</a></li>
+					<li><a>가방</a></li>
+				</ul>
+			</li>
+			<li style="width:114px" class="category2"><a href="" onmouseover="this.innerHTML='아웃웨어'" onmouseout="this.innerHTML='OUTWEAR'">OUTWEAR</a>
+				<ul class="sub sub2">
+					<li><a>가디건</a></li>
+					<li><a>코트</a></li>
+					<li><a>패딩</a></li>
+					<li><a>숄/판초</a></li>
+					<li><a>베스트</a></li>
+					<li><a>자켓/블레이져</a></li>
+					<li><a>점퍼/집업</a></li>
+				</ul>
+			</li>
+			<li style="width:72px" class="category3"><a href="" onmouseover="this.innerHTML='티'" onmouseout="this.innerHTML='TEE'">TEE</a>
+				<ul class="sub sub3">
+					<li><a>긴팔</a></li>
+					<li><a>반팔</a></li>
+					<li><a>카라</a></li>
+					<li><a>롱/루즈핏</a></li>
+					<li><a>민소매</a></li>
+					<li><a>니트</a></li>
+					<li><a>슬림/베이직핏</a></li>
+					<li><a>후드</a></li>
+				</ul>
+			</li>
+	            <li style="width:94px" class="category4"><a href="" onmouseover="this.innerHTML='셔츠'" onmouseout="this.innerHTML='SHIRTS'">SHIRTS</a>
+	        	<ul class="sub sub4">
+					<li><a>긴팔</a></li>
+					<li><a>반팔</a></li>
+					<li><a>롱/루즈핏</a></li>
+					<li><a>체크</a></li>
+					<li><a>베이직/슬림핏</a></li>
+				</ul>    
+	            </li>
+	            <li style="width:90px" class="category5"><a href="" onmouseover="this.innerHTML='팬츠'" onmouseout="this.innerHTML='PANTS'">PANTS</a>
+	        	<ul class="sub sub5">
+					<li><a>스키니</a></li>
+					<li><a>긴바지</a></li>
+					<li><a>일자바지</a></li>
+					<li><a>배기바지</a></li>
+					<li><a>반바지</a></li>
+					<li><a>슬랙스</a></li>
+					<li><a>조거</a></li>
+					<li><a>부츠컷</a></li>
+				</ul>    
+	            </li>
+	            <li style="width:76px" class="category6"><a href="" onmouseover="this.innerHTML='가방'" onmouseout="this.innerHTML='BAG'">BAG</a>
+	        	<ul class="sub sub6">
+					<li><a>기타</a></li>
+					<li><a>백팩</a></li>
+					<li><a>숄더백</a></li>
+					<li><a>클러치백</a></li>
+					<li><a>토트백</a></li>
+					<li><a>크로스백</a></li>
+				</ul>    
+	            </li>
+	            <li style="width:91px" class="category7"><a href="" onmouseover="this.innerHTML='신발'" onmouseout="this.innerHTML='SHOES'">SHOES</a>
+	        	<ul class="sub sub7">
+					<li><a>기성화</a></li>
+					<li><a>수제화</a></li>
+					<li><a>SHOECUS</a></li>
+				</ul>    
+	            </li>
+	            <li style="width:123px" class="category8"><a href="" onmouseover="this.innerHTML='악세사리'" onmouseout="this.innerHTML='ACCESSORY'">ACCESSORY</a>
+	        	<ul class="sub sub8">
+					<li><a>팔찌</a></li>
+					<li><a>양말</a></li>
+					<li><a>모자</a></li>
+					<li><a>시계</a></li>
+					<li><a>장갑/워머</a></li>
+					<li><a>지갑</a></li>
+					<li><a>안경</a></li>
+					<li><a>기타</a></li>
+					<li><a>목걸이</a></li>
+					<li><a>머플러</a></li>
+					<li><a>반지</a></li>
+					<li><a>벨트</a></li>
+				</ul>    
+	            </li>
+	            <li style="width:115px" class="category"><a href="" onmouseover="this.innerHTML='신상5%할인'" onmouseout="this.innerHTML='NEW'">NEW</a></li>
+	            <li style="width:80px" class="category"><a href="" onmouseover="this.innerHTML='세일'" onmouseout="this.innerHTML='SALE'">SALE</a></li>
+			</ul>
+		</div>
 </div>
 
 
 <div id="full_main">
 	<div id="banner_wrapper " class="banner_wrapper">
-			<img class='banner_image1' src='../image/banner_top.jpg'>
-			<img class='banner_image2' src='../image/banner_bot.jpg'>
-			<img class='banner_image3' src='../image/banner_sho.jpg'>
-			<img class='banner_image4' src='../image/banner_acc.jpg'>
+			<img  src='../image/banner_acc.jpg'>
+			<img class="page" src='../image/banner_top.jpg'>
+			<img class="page" src='../image/banner_bot.jpg'>
+			<img class="page" src='../image/banner_sho.jpg'>
+			<img class="page" src='../image/banner_acc.jpg'>
+			<img class="page" src='../image/banner_top.jpg'>
 	</div>
-		<a href="#" id="full_banner_prev"><img src="../image/slide_left.png"/></a>
-		<a href="#" id="full_banner_next"><img src="../image/slide_right.png"/></a>
+        
+		<img id="full_banner_prev" src="../image/slide_left.png"/>
+		<img id="full_banner_next"  src="../image/slide_right.png"/>
+
 	<div id="slider_pg">
 	</div>
+	
 </div>
 
 <hr class="midHR">
 	<div id="content">
-		<div id="container">
-			<div id="contents">
-				<div class="contents_info" module="contents_info">
-					<ul class="info_area">
-						<li class="info_img">
-							<a href=""><img alt="웰컴조인자리" src="../image/join_1.jpg"> </a>
-						</li>
-						<li class="info_img">
-							<a href=""><img alt="리뷰자리" src="../image/review_2.jpg"> </a>
-						</li>
-						<li class="info_notice">
-							<div class="info_notice">
-								<h2><a href="" >notice &amp; news</a></h2>
-										<ul>
-										<li><a href="">거래처와 협력사 장기휴가로인한 배송지연공지</a><span>07/30</span></li>
-										<li><a href="">2018년 설연휴 배송관련공지</a><span>02/07</span></li>
-										<li><a href="">회원등급별 할인혜택</a><span>04/26</span></li>
-										</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="product">
-					<div class="item_title">
-						<h2>new arrivals</h2>
-						<p>최근 업데이트 된 신상품입니다.</p>
-					</div>
-					
-					<ul class="main_items">
-						<li id="item" class="item">
-							<div class="box">
-								<a href="" name="BoxName"><img alt="스터드 레더패치 블랙티" src="../image/shop1.jpg" class="thumb"> </a>
-								<p class="name">
-									<a href=""><span style="font-size: 11px; color: #333333;">스터드 레더패치 블랙티<br><br></span> </a>
-								</p>
-								<p class="icon"></p>
-								<ul class="product ">
-									<li class="record">
-									<strong class="title displaynone">
-										<span style="font-size: 13px; color: #000000; font-weight: bold;">판매가</span> :
-									</strong>
-										<span style="font-size: 13px; color: #000000; font-weight: bold;">32,500원</span>
-										<span id="span_type" style=""> </span>
-								</ul>
-							</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop2.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">버클빅포켓 지퍼팬츠<br>(블랙/화이트)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">79,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop3.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">라인로드 루즈티<br>(블랙/화이트)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop4.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">스퀘어체크 루즈롱셔츠<br>(블랙/화이트)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">54,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop5.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">믹스카툰 롱셔츠<br><br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">54,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop6.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RC[AL228] ZG-HL17<br>(블랙/화이트)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">11,000원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop7.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RC[AL241] ZG버클쪼리<br>(블랙/화이트)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">15,000원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop8.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">모노플라워 루즈셔츠<br>(블랙/블루)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">58,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop9.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop10.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop11.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop12.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop13.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop14.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop15.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop16.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop17.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-							
-							
-							<li id="item" class="item">
-								<div class="box">
-									<a href="" name="BoxName"><img src="../image/shop18.jpg" alt="" class="thumb"/></a>
-									<p class="name">
-										<a href=""><span style="font-size:11px;color:#333333;">RCPM2433<br>(블랙/네이비/남여공용)<br></span></a>
-									</p>
-									<p class="icon"></p>
-									<ul class="product">
-										<li class="record">
-										<strong class="title displaynone">
-											<span style="font-size:13px;color:#000000;font-weight:bold;">판매가</span> :</strong> 
-											<span style="font-size:13px;color:#000000;font-weight:bold;">29,500원</span>
-											<span id="span_type" style=""> </span>
-										</li>
-									</ul>
-								</div>
-							</li>
-								
-					</ul>
-				</div>
-			</div>
-			
-			<hr class="footerHR">
-		</div>
+	 
+		<c:if test="${param.req==null}">
+			<jsp:include page="../board/itemList.jsp" />
+		</c:if>
+	 
+		<!-- 로그인화면-->
+		<c:if test="${param.req=='loginForm'}">
+			<jsp:include page="../shop_member/loginForm.jsp" />
+		</c:if>
+		
+		<!-- 회원가입 화면 -->
+		<c:if test="${param.req=='joinForm'}">
+			<jsp:include page="../shop_member/JoinForm.jsp" />
+		</c:if>
+		
+		<!-- 상품등록화면 -->
+		<c:if test="${param.req=='insertForm'}">
+			<jsp:include page="/admin/insertForm.jsp" />
+		</c:if>
+		
+		<!-- 상품등록완료 -->
+		<c:if test="${param.req=='insertItem'}">
+			<jsp:include page="/admin/insertItem.jsp" />
+		</c:if>
+		
+		<!-- 관리자리스트 -->
+		<c:if test="${param.req=='adminList' }">
+			<jsp:include page="/admin/adminList.jsp"/>
+		</c:if>
+
+		<!-- qna목록
+		<c:if test="${param.req=='qnaList'}">
+			<jsp:include page="../qna/qnaList.jsp" />
+		</c:if>
+	 -->
+		 
+		<c:if test="${param.req=='noticeList'}">
+			<jsp:include page="../notice/noticeList.jsp" />
+		</c:if>
+	
+		
 	</div>	
 			<div id="footer">
 			<div class="footer_menu">
@@ -547,6 +448,51 @@
 
 
 	<a href="#" class="img_top"><img  alt="" src="../image/top.JPG"></a>
+	
+	<img class="open" src="../image/open.png">
+	<img class="close" src="../image/close.png">
+	
+	<div class="bar_right">
+		<div class="bar_div">
+			<div class="bar_panel">
+				<ul class="panel_board">
+					<h2>board<br> ―</h2>
+					<li><a href="">notice</a></li>
+					<li><a href="">Q &amp; A</a></li>
+					<li><a href="">REVIEW</a></li>
+				</ul>
 
+					<ul class="panel_info">	
+						<h2>HELP DESK<br> ―</h2>
+						<p><b>1688-9856</b></p>
+						<p>mon - fri 10:30 - 18:30</p>
+						<p>lunch time 13:00 - 14:00</p>
+						<p><strong>sat, sun, holiday off</strong></p>
+					</ul>
+					
+						<ul class="panel_bank">
+								<h2>banking<br>―</h2>
+								<p><b>SC제일은행</b><br>157-20-155301</p>
+								<p><b>카카오뱅크</b><br>3333-01-5132902</p>
+								<p><strong>예금주 : 박시연</strong></p>
+						</ul>
+					</div>
+				<div class="">
+					<h3><a href="">view item<br>―</a></h3>
+					<ul>
+						<li class="">
+							<a href=""><img src="" alt=""></a>
+							</li>
+							<li class="">
+							<a href=""><img src="" alt=""></a>
+						</li>
+					</ul>
+							<p class="view_item">
+								<img src="../image/view_prev.gif" alt="이전 제품" class="prev">
+								<img src="../image/view_next.gif" alt="다음 제품" class="next">
+							 </p>
+					</div>
+				</div>
+			</div>
 </body>
 </html>

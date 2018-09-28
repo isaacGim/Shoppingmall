@@ -33,6 +33,11 @@ public class ItemServiceImpl implements ItemService {
 	public int deleteItem(String item_code) {
 		return itemDAO.deleteItem(item_code);
 	}
+	
+	@Override
+	public int deleteItemByIndex(int item_index) {
+		return itemDAO.deleteItemByIndex(item_index);
+	}
 
 	@Override	// 상품 보기 (상세보기)
 	public ItemDTO getItem(String item_name) {
@@ -48,7 +53,22 @@ public class ItemServiceImpl implements ItemService {
 	public List<ItemDTO> getItemsByDetailCategory(String item_category, String item_detail_category) {
 		return itemDAO.getItemsByDetailCategory(item_category, item_detail_category);
 	}
+	@Override	// 상품 전체 목록 보기
+	public List<ItemDTO> getItemList() {
+		return itemDAO.getItemList();
+	}
+	
+	@Override
+	public List<ItemDTO> getAdminItemsList(int startNum, int endNum) {
+		return itemDAO.getAdminItemsList(startNum, endNum);
+	}
+	
+	@Override
+	public int getItemsCount() {
+		return itemDAO.getItemsCount();
+	}
 
+	
 	@Override
 	public List<Integer> getItemsIndex(String item_category) {
 		return itemDAO.getItemsIndex(item_category);
@@ -138,6 +158,21 @@ public class ItemServiceImpl implements ItemService {
 		return itemDAO.getTotalItem();
 	}
 
+	@Override
+	public int getItemIndex(String item_code, String item_color, String item_size) {
+		return itemDAO.getItemIndex(item_code, item_color, item_size);
+	}
+
+	@Override
+	public ItemDTO getItemByIndex(int item_index) {
+		return itemDAO.getItemByIndex(item_index);
+	}
+
+	@Override
+	public List<ItemDTO> getItemsToMain() {
+		return itemDAO.getItemsToMain();
+	}
+	
 }
 
 

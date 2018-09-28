@@ -16,7 +16,6 @@ public class Shop_memberDTO {
 	private String phone3;				// 휴대전화 3
 	private String email1;				// 이메일 1
 	private String email2;				// 이메일 2
-	private String email3;				// 이메일 3
 	private String gender;				// 성별
 	private String birth_year;			// 생년월일 년도
 	private String birth_month;			// 생년월일 월
@@ -116,12 +115,7 @@ public class Shop_memberDTO {
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
-	public String getEmail3() {
-		return email3;
-	}
-	public void setEmail3(String email3) {
-		this.email3 = email3;
-	}
+	
 	public String getGender() {
 		return gender;
 	}

@@ -36,7 +36,7 @@ public class OrdersDAO {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);	
-		return sqlSession.selectList("mybatis.orders.OrdersList", map);
+		return sqlSession.selectList("mybatis.orders.ordersList", map);
 	}
 	
 	// 구매, 주문내역 총 갯수
@@ -44,6 +44,8 @@ public class OrdersDAO {
 		return sqlSession.selectOne("mybatis.orders.getOrdersTotalA");
 	}
 	// 가장 최근 구매 내역 확인
-	
+	public OrdersDTO ordersRecent() {
+		return sqlSession.selectOne("mybatis.orders.ordersRecent");
+	}
 	
 }

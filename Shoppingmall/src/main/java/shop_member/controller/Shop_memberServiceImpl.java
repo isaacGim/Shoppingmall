@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import shop_member.bean.Shop_memberDTO;
 import shop_member.dao.Shop_memberDAO;
+
 @Service
 public class Shop_memberServiceImpl implements Shop_memberService {
 

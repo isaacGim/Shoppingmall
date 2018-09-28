@@ -15,4 +15,6 @@ public interface OrdersService {
 	public List<OrdersDTO> OrdersList(int startNum, int endNum);
 	// 구매, 주문내역 총 갯수 얻기
 	public int getOrdersTotalA();
+	// 가장 최근 구매 내역 확인
+	public OrdersDTO ordersRecent();
 }

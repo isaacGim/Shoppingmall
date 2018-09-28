@@ -7,16 +7,12 @@
 	<!-- 회원가입 -->
 	<insert id="insertShopMember" parameterType="shop_memberDTO">
 		INSERT INTO shop_member
-		VALUES
-		(
-		id=#{id}, pwd=#{pwd}, pwd_chk_q=#{pwd_chk_q}, pwd_chk_a=#{pwd_chk_a},
-		name=#{name}, addr1=#{addr1}, addr2=#{addr2}, tel1=#{tel1}, tel2=#{tel2}, tel3=#{tel3},
-		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3},
-		email1=#{email1}, email2=#{email2}, email3=#{email3}, gender=#{gender},
-		birth_year=#{birth_year}, birth_month=#{birth_month}, birth_day=#{birth_day},
-		birth_solar_lunar=#{birth_solar_lunar}, job=#{job}, accounter=#{accounter},
-		bank_name=#{bank_name}, account_num=#{account_num}
-		)
+		VALUES 
+		( #{id}, #{pwd}, #{pwd_chk_q}, #{pwd_chk_a}, 
+		#{name}, #{addr1}, #{addr2}, #{tel1}, #{tel2}, #{tel3}, 
+		#{phone1}, #{phone2}, #{phone3}, #{email1}, #{email2}, 
+		#{gender}, #{birth_year}, #{birth_month}, #{birth_day}, 
+		#{birth_solar_lunar}, #{job}, #{accounter}, #{bank_name}, #{account_num} )
 	</insert>
 	
 	<!-- 회원탈퇴 -->
@@ -30,7 +26,7 @@
 		pwd=#{pwd}, pwd_chk_q=#{pwd_chk_q}, pwd_chk_a=#{pwd_chk_a},
 		name=#{name}, addr1=#{addr1}, addr2=#{addr2}, tel1=#{tel1}, tel2=#{tel2}, tel3=#{tel3},
 		phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3},
-		email1=#{email1}, email2=#{email2}, email3=#{email3}, gender=#{gender},
+		email1=#{email1}, email2=#{email2}, gender=#{gender},
 		birth_year=#{birth_year}, birth_month=#{birth_month}, birth_day=#{birth_day},
 		birth_solar_lunar=#{birth_solar_lunar}, job=#{job}, accounter=#{accounter},
 		bank_name=#{bank_name}, account_num=#{account_num}

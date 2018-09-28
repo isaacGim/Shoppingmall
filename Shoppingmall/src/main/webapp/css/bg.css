@@ -2,8 +2,18 @@ body, div, ul, li{
 	margin: 0;
 	padding: 0;
 }
-a:hover{
+li{
+	text-decoration: none;
+	list-style:none;
+}
+a, a:hover, a:visited, a:link, a:active{
+	font-weight:bold;
+	display:inline-block;
+	text-decoration:none;
 	cursor: pointer;
+}
+a{
+	color: black;
 }
 body{
 	height:100%;
@@ -29,7 +39,6 @@ body{
 		font-size:13px;
 		text-align:center;
 		word-spacing:3em;
-		text-decoration:none;
 		float: left;
 		position: static;
 	}
@@ -42,7 +51,6 @@ body{
 		position: static;
 	}
 	.top_info_right a{
-		text-decoration:none;
 		letter-spacing:3px;
 		margin-right: 1em;
 	}
@@ -64,11 +72,11 @@ body{
 	}
 	
 	.top_banner_helpInfo ul li{
-		list-style:none;
 		float: left;
 	}
 	.top_banner_search{
 		 float: right;
+		 margin-right: 200px;
 	}
 	
 	.top_banner_helpInfo ul li{
@@ -119,24 +127,44 @@ body{
 
 .top_category{
 	width:100%;
-	margin: 0 0;
+	height:50px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 100;
+}
+
+.main_category{
+	margin-left: 16%;
+}
+.main_category ul {
+	float: left;
+	width: 100%;
+	overflow: hidden;
 }
 
 .main_category ul li{
+	margin-right:3%;
 	float: left;
-	display: inline-block;
+	width:90px;
+	box-sizing: border-box;
 }
 
-.main_category ul{
-	margin: 1% 5% 1% 20%;
-}
+.main_category ul li a{
+	display: block;
+	width: 100%;
+	text-align: left;
+}	
+
 	.active {
 			position: fixed;
 			top: 0px;
 			width: 100%;
-			height: 80px;
-			background-color: #f9ddd6;
-			z-index: 100;
+			height: 50px;
+			background-image:url("../image/cate_back.jpg");
+			opacity:0.7!important;
+			border:1px solid gray;
+			z-index: 1;
+			font-weight: bold;
 		}
 	.normal {
 			position: absolute;
@@ -144,36 +172,45 @@ body{
 			height: 80px;
 		}
 
+.sub{
+	display:none;
+	border-bottom: 1px solid gray;
+	background-color: #FFFAFF;
+}
+.sub li{
+	font-size:14px;
+}
+
+
 #full_main{
 	width:1702px;
-	margin:0 auto;
+	height:600px;
+	margin:1% 5%;
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 }
 
 .banner_wrapper{
-	width: 6808px;
-	overflow: hidden;
-	position: relative;
+	width: 10212px;
+	position: absolute;
 }
 
 
 .banner_wrapper img{
 	width: 1700px;
-	height: 600px;
+	height:600px;
 	border:solid 1px;
-	margin-top: 100px;
 	float: left;
 }
 
+
 #full_banner_next , #full_banner_prev{
 	position: absolute;
-	top: 70%;
+	top: 60%;
 	cursor: pointer;
-	width: 20px;
+	width: 40px;
 	height: 39px;
 	display: block;
-	z-index: 1;
 	margin-left: 10px;
 	margin-right: 40px;
 }
@@ -196,7 +233,7 @@ body{
 
 #content{
 	width: 100%;
-	margin: 0 0;
+	margin-top: 40%;
 }
 
 #contents{
@@ -211,15 +248,12 @@ body{
 }
 
 .info_area li{
-	list-style:none;
 	float: left;
-	text-decoration:none;
 	position: static;
 	margin-left: 3em;
 }
 
 .info_notice div{
-	text-decoration:none;
 	width: 450px;
 	margin: 0 auto;
 	overflow: auto;
@@ -238,14 +272,15 @@ body{
 	overflow: auto;
 }
 
+.box:hover{
+	opacity: 0.6!important;
+}
+
 .item_title{
-	text-decoration:none;
 	text-align: center;
-	
 }
 
 .item{
-	list-style:none;
 	float: left;
 	position: static;
 }	
@@ -257,7 +292,6 @@ body{
 	
 }
 ul .product{
-	list-style: none;
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -285,9 +319,7 @@ ul .product{
 	}
 
 	.menus li{
-		font-family:sans-serif;
 		text-align:left;
-		list-style:none;
 		float: left;
 		position: static;
 		padding: 0 10px;
@@ -309,7 +341,6 @@ ul .product{
 		font-size:11px;
 		font-family:sans-serif;
 		text-align:left;
-		list-style:none;
 		float: left;
 		padding: 10px 220px 10px 0;
 		position: static;
@@ -330,13 +361,159 @@ ul .product{
 
 
 .img_top > img{
+	width:80px;
 	right:0px;
 	bottom:0px;
 	position:fixed;
 	display: none;
+	z-index: 100;
 }
 
 .img_top:hover{
 	cursor: pointer;	
 }
+
+
+.bar_right{
+	top:0px;
+	right:0px;
+	width: 100px;
+	height: 100%;
+	position: fixed;
+	background: #f6f5f4;
+	z-index: 99;
+	font-size: 12px;
+}
+
+.close_bar{
+	top:0px;
+	right:-90px;
+	width: 100px;
+	height: 100%;
+	position: fixed;
+	background: #f6f5f4;
+	z-index: 99;
+}
+
+.bar_div{
+	margin-left:10px;
+	text-align: left;
+	font-size: 11px;
+}
+
+.bar_div li{
+	list-style: none;
+}
+
+.open{
+	top:50%;
+	right: 10px;
+	position: fixed;
+}
+.close{
+	top:50%;
+	right:100px;
+	position: fixed;
+}
+
+.loginForm{
+	width:100%;
+	display:inline-block;
+	padding-top:0;
+	padding-bottom:0;
+	overflow:hidden;
+	height:auto;
+}
+
+.click_loginbox{
+	width: 200px;
+	height: 30px;
+	border: 1px solid black;
+	background-color: black;
+	color: white;
+	padding-top: 10px;
+}
+
+.click_loginbox:hover{
+	background-color: white;
+	color: black;
+}
+
+.click_joinbox{
+	width: 200px;
+	height: 30px;
+	border: 1px solid black;
+	padding-top: 10px;
+}
+
+.click_joinbox:hover{
+	background-color: black;
+	color: white;
+}
+
+.id{
+	border: 1px solid gray;
+	font-size:20px;
+	line-height: 2;
+}
+
+.passwd{
+	border: 1px solid gray;
+	font-size:20px;
+}
+#member_id{
+	width:200px;
+	border:none;
+}
+
+#member_passwd{
+	width:196px;
+	border:none;
+}
+
+#inserttable{
+	width:50%;
+	height:800px;
+	margin:0 auto;
+	line-height:1em;
+	border:1px solid gray;
+	border-left: none;
+	border-right: none;
+}
+
+#inserttable input{
+	font-size:18px;
+	border-color: #FBFAFA;
+}	
+.insert_list{
+	background-color: #FBFAFA;
+}
+
+
+/* board css start*/
+.board_table {	display: block;  text-align: center;  border-top:1px solid #d1cfcf;}
+.board_table tr:after {	content: ''; display: block; float: none; clear: both;}
+.board_table thead, tbody, tr {display: block; width: 100%; border-bottom: 1px solid #d1cfcf;}
+.board_table td, th {display: block; float: left; padding: 10px 0;}
+.example{text-align: center; width: 1500px; margin: 0 auto; }
+.board_title{text-align: center; font-size: 15px; font-family: 'Gaegu', cursive;}
+.titleHr{border-bottom: 3px double #d1cfcf;	width: 500px;}
+.boardList{font-family: 'Gaegu', cursive;}
+.boardResult{font-family:'Jua', sans-serif; font-size: 10px;}
+.write_btn{	margin-left: 90%;}
+
+/* board_view css start*/
+
+/* 버튼------------------------------------- */
+.btnArea { text-align: right; margin-top: 20px;}
+.btnArea .left { float: left;}
+.btnArea span {	border: 1px groove #d1cfcf; font-size: 20px; background-color: #ffffff; border-radius: 10px; width: 40px;}
+#link:link{color: black; text-decoration: none;}
+#link:visited {color: black; text-decoration: none;}
+#link:achive {color: black; text-decoration: none;}
+
+
+
+
+
 

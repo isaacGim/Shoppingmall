@@ -21,7 +21,7 @@
 	
 	<!-- 구매 [주문내역] 리스트 -->
 	<!-- 최근 주문 내역 확인하기 startNum, endNum에 1 대입 -->
-	<select id="OrdersList" parameterType="java.util.Map" resultType="ordersDTO">
+	<select id="ordersList" parameterType="java.util.Map" resultType="ordersDTO">
 		<![CDATA[select * from  
 			(select rownum rn, tt.* from
 			(select * from orders order by order_num desc) tt) 
@@ -33,7 +33,7 @@
 		SELECT count(*) FROM orders
 	</select>
 	<!-- 가장 최근 구매 내역 확인 -->
-	<select id="OrdersRecent" resultType="ordersDTO">
+	<select id="ordersRecent" resultType="ordersDTO">
 		SELECT * FROM 
 		(SELECT * FROM item ORDER BY ROWNUM DESC) 
 		WHERE ROWNUM = 1;

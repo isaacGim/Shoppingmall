@@ -39,4 +39,9 @@ public class OrdersServiceImpl implements OrdersService {
 		return ordersDAO.getOrdersTotalA();
 	}
 
+	@Override
+	public OrdersDTO ordersRecent() {
+		return ordersDAO.ordersRecent();
+	}
+
 }

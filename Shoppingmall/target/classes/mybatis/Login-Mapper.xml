@@ -6,7 +6,7 @@
 
 	<!-- 로그인 -->				
 	<select id="loginShopMember" parameterType="java.util.Map" resultType="String">
-		SELECT name FROM show_member WHERE id=#{id} and pwd=#{pwd}
+		SELECT name FROM shop_member WHERE id=#{id} and pwd=#{pwd}
 	</select>
 
 </mapper>
