@@ -40,8 +40,8 @@ public class Board_qnaDAO { // qna
 	// Q&A 게시판 목록 보기
 	public List<Board_qnaDTO> qnaList(int startNum, int endNum) {
 		Map<String, Integer> map = new HashMap<>();
-		map.put(String.valueOf(startNum), startNum);
-		map.put(String.valueOf(endNum), endNum);
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
 		return sqlSession.selectList("mybatis.board.qnaList", map);
 	}
 	// 글 상세보기

@@ -1,5 +1,8 @@
+<%@page import="item.bean.ItemDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="item.controller.ItemServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,24 +41,28 @@
 						<p>최근 업데이트 된 신상품입니다.</p>
 					</div>
 					
+					<!-- 메인 아이템 리스트 -->
+					
 					<ul class="main_items">
-						<li id="item" class="item">
-							<div class="box">
-								<a href="" name="BoxName"><img alt="스터드 레더패치 블랙티" src="../image/shop1.jpg" class="thumb"> </a>
-								<p class="name">
-									<a href=""><span style="font-size: 11px; color: #333333;">스터드 레더패치 블랙티<br><br></span> </a>
-								</p>
-								<p class="icon"></p>
-								<ul class="product ">
-									<li class="record">
-									<strong class="title displaynone">
-										<span style="font-size: 13px; color: #000000; font-weight: bold;">판매가</span> :
-									</strong>
-										<span style="font-size: 13px; color: #000000; font-weight: bold;">32,500원</span>
-										<span id="span_type" style=""> </span>
-								</ul>
-							</div>
-						</li>
+						<c:forEach var="itemDTO" items="${list }">
+							<li id="item" class="item">
+								<div class="box">
+									<a href="" name="BoxName"><img src="../storage/${itemDTO.item_img }" class="thumb"> </a>
+									<p class="name">
+										<a href=""><span style="font-size: 11px; color: #333333;">${itemDTO.item_name }<br><br></span> </a>
+									</p>
+									<p class="icon"></p>
+									<ul class="product ">
+										<li class="record">
+										<strong class="title displaynone">
+											<span style="font-size: 13px; color: #000000; font-weight: bold;">판매가</span> :
+										</strong>
+											<span style="font-size: 13px; color: #000000; font-weight: bold;">${itemDTO.item_price }원</span>
+											<span id="span_type" style=""> </span>
+									</ul>
+								</div>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>

@@ -24,7 +24,7 @@ public class ItemController {
 	
 	@Autowired
 	private ItemServiceImpl itemservice;
-	
+	// 관리자 페이지 리스트
 	@RequestMapping(value="/admin/adminList")
 	public ModelAndView adminList(HttpServletRequest request, ModelAndView modelAndView) {
 		
@@ -100,7 +100,7 @@ public class ItemController {
 		modelAndView.setViewName("/main/index.jsp?req=insertItem");
 		return modelAndView;
 	}
-	
+	// 관리자 페이지 리스트 삭제
 	@RequestMapping(value="/admin/deleteItem", method=RequestMethod.POST)
 	public void delete(HttpServletRequest request, @RequestBody List<String> indexArray) {
 		

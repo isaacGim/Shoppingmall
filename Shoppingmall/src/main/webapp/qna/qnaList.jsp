@@ -1,30 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA List</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../font/fonts.css">
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bg.css">
+<link rel="stylesheet" type="text/css" href="../font/fonts.css">
+
 <script type="text/javascript">
-	//subject 버튼 클릭시 이동 
-	$(function(){
-		$(".qnaSubject").click(function(){
-			location.href="/Project2/main/index.jsp?req=qnaView";
+	$(function() {
+		$("#qnaWrite").click(function() {
+			location.href="/Shoppingmall/qna/qnaWriteForm";
 		});
-		
-		$(".noticeWrite").click(function(){
-			location.href="/Project2/main/index.jsp?req=qnaWriteForm";
-		});
-		
 	});
 </script>
 </head>
 <body>
-	<div class="example">
-		<p style="text-align:right;"><a href="../main/index.jsp">HOME</a> > Q & A</p>
+<div class="example">
+		<p style="text-align:right;"><a href="../main/index">HOME</a> > Q & A</p>
 			<!-- 게시판 제목이 출력될 곳 -->
 		<div class="board_title">
 			<p>Q & A</p>
@@ -40,19 +35,41 @@
 					<th class="date" style="width:10%">DATE</th>
 				</tr>
 				<!-- 목록이 출력될 곳 -->
-				<tr class="boardResult">
-					<td class="no" style="width:10%">NO</td>
-					<td class="item" style="width:10%">ITEM</td>
-					<td class="subject" style="width:60%"><a href="#"><span class="qnaSubject">SUBJECT</span></a></td>
-					<td class="name" style="width:10%">NAME</td>
-					<td class="date" style="width:10%">DATE</td>
-				</tr>
+				<c:forEach var="board_qnaDTO" items="${list}">
+					<tr class="boardResult">
+						<td class="no" style="width:10%">${board_qnaDTO.board_qna_num}</td>
+						<td class="item" style="width:10%">${board_qnaDTO.board_qna_img}</td>
+						<td class="subject" style="width:60%"><a href="#"><span class="qnaSubject">${board_qnaDTO.board_qna_subject }</span></a></td>
+						<td class="name" style="width:10%">${board_qnaDTO.board_qna_writer}</td>
+						<td class="date" style="width:10%">${board_qnaDTO.board_qna_date}</td>
+					</tr>
+				</c:forEach>
 		</table>
 		
-		<!-- 로그인 상태 권한  -->
+		<!-- 로그인 상태 권한  --> 
 		<div class="btnArea ">
-				<a id="link" href="#none"><span class="qnaWrite" id="qnaWrite">글쓰기</span></a>
+			<a id="link" href="#none"><span class="qnaWrite" id="qnaWrite">글쓰기</span></a>
        	</div>
+       	
+       	<!-- paging -->
+		<div id="pageList">
+		<c:if test="${pg > 5 }">
+			[<a class="paging" href="/Shoppingmall/qna/qnaList?pg=${startPage - 1 }">이전</a>]
+		</c:if>
+		
+		<c:forEach var="a" begin="${startPage }" end="${endPage }" step="1">
+			<c:if test="${a == pg}">
+				[<a class="currentPaging" href="/Shoppingmall/qna/qnaList?pg=${a}">${a}</a>]
+			</c:if>
+			<c:if test="${a != pg}">
+				[<a class="paging" href="/Shoppingmall/qna/qnaList?pg=${a}">${a}</a>]
+			</c:if>	
+		</c:forEach>
+		
+		<c:if test="${endPage < totalPage }">
+			[<a class="paging" href="/Shoppingmall/qna/qnaList?pg=${startPage + 1 }">다음</a>]
+		</c:if>
+		</div>
 	</div>
 </body>
 </html>

@@ -11,7 +11,6 @@
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
-	
 	<!-- shop_member.(bean, controller, dao)에 등록된 어노테이션을 읽는다. -->
 	<context:component-scan base-package="shop_member.bean"/>
 	<context:component-scan base-package="shop_member.dao"/>

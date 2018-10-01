@@ -17,6 +17,7 @@ public class NoticeController {
 	@Autowired
 	NoticeServiceImpl noticeService;
 	
+	// 공지사항 목록
 	@RequestMapping("/notice/noticeList")
 	public ModelAndView noticeList(HttpServletRequest request, ModelAndView modelAndView) {
 		
@@ -50,25 +51,43 @@ public class NoticeController {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO = noticeService.noticeView(notice_num);
 		noticeService.updateHit(notice_num);
-
+		
 		// 이전 글
 		int prev = notice_num + 1;
 		NoticeDTO prevNoticeDTO = new NoticeDTO();
 		prevNoticeDTO = noticeService.noticeView(prev);
-		
 		
 		// 다음 글
 		int next = notice_num - 1;
 		NoticeDTO nextNoticeDTO = new NoticeDTO();
 		nextNoticeDTO = noticeService.noticeView(next);
 		
-		modelAndView.addObject("prevNoticeDTO", prevNoticeDTO);	// 이전 글
-		modelAndView.addObject("nextNoticeDTO", nextNoticeDTO);	// 다음 글
+		modelAndView.addObject("prevNoticeDTO", prevNoticeDTO);	// 이전 글	
+		modelAndView.addObject("nextNoticeDTO", nextNoticeDTO);	// 다음 글	
 		
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("noticeDTO", noticeDTO);
 		modelAndView.setViewName("/main/index.jsp?req=noticeView");
 		return modelAndView;
 	}
-	
+	// 공지사항 글 쓰기
+	@RequestMapping("/notice/noticeWriteForm")
+	public ModelAndView noticeWriteForm(HttpServletRequest request, ModelAndView modelAndView) {
+		modelAndView.setViewName("/main/index.jsp?req=noticeWriteForm");
+		return modelAndView;
+	}
+	// 공지사항 글 등록
+	@RequestMapping("/notice/noticeWrite")
+	public ModelAndView noticeWrite(HttpServletRequest request, ModelAndView modelAndView) {
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNotice_hit(Integer.parseInt(request.getParameter("hit")));
+		noticeDTO.setNotice_subject(request.getParameter("subject"));
+		noticeDTO.setNotice_writer(request.getParameter("name"));
+		noticeDTO.setNotice_content(request.getParameter("content"));
+		int result = noticeService.insert(noticeDTO);
+		
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/main/index.jsp?req=noticeWrite");
+		return modelAndView;
+	}
 }

@@ -17,11 +17,12 @@ public class Shop_memberController {
 	@Autowired
 	private Shop_memberServiceImpl memberService;
 	
+	
 	// 메인페이지
 	@RequestMapping(value="/main/index")
 	public ModelAndView index(HttpServletRequest request) {	// 파일 이름과 함수 이름 같게 수정할 것
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/main/index.jsp");
+		modelAndView.setViewName("redirect:../main/index.jsp");
 		return modelAndView;
 	}
 	
@@ -43,7 +44,7 @@ public class Shop_memberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member_id", id);
 			session.setAttribute("member_name", name);
-			modelAndView.setViewName("/main/index.jsp");
+			modelAndView.setViewName("redirect:../main/index.jsp");
 		} else {
 			modelAndView.setViewName("/main/index.jsp?req=loginForm");
 		}
@@ -56,7 +57,7 @@ public class Shop_memberController {
 		HttpSession session = request.getSession(false);
 		session.invalidate();
 		
-		modelAndView.setViewName("/main/index.jsp");
+		modelAndView.setViewName("redirect:../main/index.jsp");
 		return modelAndView;
 	}
 	
@@ -94,7 +95,7 @@ public class Shop_memberController {
 		shop_memberDTO.setBank_name(request.getParameter("bank_name"));
 		shop_memberDTO.setAccount_num(request.getParameter("account_num"));
 		int result = memberService.insertShopMember(shop_memberDTO);
-		if(result > 0) modelAndView.setViewName("/main/index.jsp");
+		if(result > 0) modelAndView.setViewName("redirect:../main/index.jsp");
 		else modelAndView.setViewName("/main/index.jsp?req=joinForm");
 //		if(result > 0) modelAndView.setViewName("/main/index?req=joinOk");
 //		else modelAndView.setViewName("/main/index?req=joinFail");	

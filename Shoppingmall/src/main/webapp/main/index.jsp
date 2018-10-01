@@ -171,7 +171,7 @@ var SHOW_DURATION = 200;
 			<div class="top_info_left">
 				<ul>
 					<li onclick="location.href='/Shoppingmall/notice/noticeList?pg=1'" style="list-style:none;  width: 85px;" class="list" onmouseover="this.innerHTML='공지사항'" onmouseout="this.innerHTML='NOTICE|'" >NOTICE|</li>
-					<li onclick="location.href='/Shoppingmall/main/index.jsp?req=qnaList'" style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='문의사항'" onmouseout="this.innerHTML='Q&amp;A|'" >Q&amp;A|</li>
+					<li onclick="location.href='/Shoppingmall/qna/qnaList?pg=1'" style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='문의사항'" onmouseout="this.innerHTML='Q&amp;A|'" >Q&amp;A|</li>
 					<li style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='구매후기'" onmouseout="this.innerHTML='REVIEW|'"><a href="" >REVIEW|</a></li>
 					<li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='자주묻는질문'" onmouseout="this.innerHTML='FAQ|'"><a href="" >FAQ|</a></li>
        			    <li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='도매제휴문의'" onmouseout="this.innerHTML='WHOLESALE|'"><a href="" >WHOLESALE|</a></li>
@@ -199,7 +199,7 @@ var SHOW_DURATION = 200;
 		
 		<div class="top_banner">
 			<h1 >
-				<a href="../main/index">
+				<a href="/Shoppingmall/main/index">
 					<img alt="리멤버클릭" src="../image/top_logo.png"onmouseover="this.src='../image/top_logo_1.png'" onmouseout="this.src='../image/top_logo.png'">
 				</a>
 			</h1>
@@ -221,7 +221,7 @@ var SHOW_DURATION = 200;
 									<span class="bank_st">
 										<b>SC제일은행</b>157-20-155301<br>
 										<b>카카오뱅크</b>3333-01-5132902<br>
-										<strong>예금주 : 김이이삭</strong>
+										<strong>예금주 : 김이삭</strong>
 									</span>
 							</li>
 						</ul>
@@ -360,6 +360,7 @@ var SHOW_DURATION = 200;
 <hr class="midHR">
 	<div id="content">
 	 
+	 	<!-- 메인페이지 -->
 		<c:if test="${param.req==null}">
 			<jsp:include page="../board/itemList.jsp" />
 		</c:if>
@@ -389,12 +390,7 @@ var SHOW_DURATION = 200;
 			<jsp:include page="/admin/adminList.jsp"/>
 		</c:if>
 
-		<!-- qna목록
-		<c:if test="${param.req=='qnaList'}">
-			<jsp:include page="../qna/qnaList.jsp" />
-		</c:if>
-	 -->
-	 
+
 		 <!-- 공지사항 목록 -->
 		<c:if test="${param.req=='noticeList'}">
 			<jsp:include page="../notice/noticeList.jsp" />
@@ -405,7 +401,20 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../notice/noticeView.jsp" />
 		</c:if>
 		
+		<!-- 공지사항 글 쓰기 -->
+		<c:if test="${param.req=='noticeWriteForm'}">
+			<jsp:include page="../notice/noticeWriteForm.jsp" />
+		</c:if>
 		
+		<!-- 공지사항 글 등록 결과 -->
+		<c:if test="${param.req=='noticeWrite'}">
+			<jsp:include page="../notice/noticeWrite.jsp" />
+		</c:if>
+		
+		<!-- QNA 목록 -->
+		<c:if test="${param.req=='qnaList'}">
+			<jsp:include page="../qna/qnaList.jsp" />
+		</c:if>
 		
 	</div>	
 			<div id="footer">

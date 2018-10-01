@@ -113,7 +113,6 @@ create table shop_member (
   phone3 varchar2(10) not null,       -- 휴대전화 3
   email1 varchar2(20) not null,       -- 이메일 1
   email2 varchar2(20) not null,       -- 이메일 2
-  email3 varchar2(20) not null,       -- 이메일 3
   gender varchar2(20) not null,       -- 성별
   birth_year varchar2(20) not null,   -- 생년월일 년도
   birth_month varchar2(20) not null,  -- 생년월일 월

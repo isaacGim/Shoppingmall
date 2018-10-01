@@ -17,10 +17,11 @@
     <mvc:resources location="/font/" mapping="/font/**"/>
     <mvc:resources location="/editor/" mapping="/editor/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/storage/" mapping="/storage/**"/>
     
 	<context:component-scan base-package="shop_member.controller"/>
-	<context:component-scan base-package="board_qna.controller"/>
 	<context:component-scan base-package="item.controller"/>
+	<context:component-scan base-package="board_qna.controller"/>
 	<context:component-scan base-package="notice.controller"/>
 	<context:component-scan base-package="order_list.controller"/>
 	<context:component-scan base-package="orders.controller"/>

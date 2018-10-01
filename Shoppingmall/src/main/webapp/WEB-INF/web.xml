@@ -22,6 +22,14 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <filter>
+  	<filter-name>filterIndexPage</filter-name>
+  	<filter-class>filter.FilterIndexPage</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filterIndexPage</filter-name>
+  	<url-pattern>/main/index.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
   	<filter-name>characterEncoding</filter-name>
   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
   	<init-param>
