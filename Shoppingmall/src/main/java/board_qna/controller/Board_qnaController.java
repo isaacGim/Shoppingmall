@@ -44,7 +44,22 @@ public class Board_qnaController {
 	// Qna 글쓰기 폼
 	@RequestMapping(value="/qna/qnaWriteForm")
 	public ModelAndView qnaWriteForm(HttpServletRequest request, ModelAndView modelAndView) {
-		System.out.println("test");
+		modelAndView.setViewName("/main/index.jsp?req=qnaWriteForm");
+		return modelAndView;
+	}
+	// Qna 등록
+	@RequestMapping(value="/qna/qnaWrite")
+	public ModelAndView qnaWrite(HttpServletRequest request, ModelAndView modelAndView) {
+		
+		Board_qnaDTO board_qnaDTO = new Board_qnaDTO();
+		String subject = request.getParameter("subject"); // 제목
+		String content = request.getParameter("content"); // 내용
+		
+		
+		int result = board_qnaService.insertQna(board_qnaDTO);
+		System.out.println("result:"+result);
+		
+		modelAndView.setViewName("/main/index.jsp?req=qnaWrite");
 		return modelAndView;
 	}
 	

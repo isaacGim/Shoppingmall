@@ -416,6 +416,13 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../qna/qnaList.jsp" />
 		</c:if>
 		
+		<!-- QNA 글쓰기 폼 -->
+		<c:if test="${param.req=='qnaWriteForm'}">
+			<jsp:include page="../qna/qnaWriteForm.jsp" />
+		</c:if>
+		
+		
+		
 	</div>	
 			<div id="footer">
 			<div class="footer_menu">

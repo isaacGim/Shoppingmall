@@ -62,7 +62,8 @@ public class ItemController {
 			MultipartFile item_img1, MultipartFile item_detail_img1) {
 		// 파일처리할 경로
 		String filePath = 
-				"C:\\Users\\user\\git\\Shoppingmall\\Shoppingmall\\src\\main\\webapp\\storage";
+				//"C:\\Users\\user\\git\\Shoppingmall\\Shoppingmall\\src\\main\\webapp\\storage";
+				"C:\\Users\\isaac\\git\\Shoppingmall\\Shoppingmall\\src\\main\\webapp\\storage";
 		// 파일 이름
 		String fileName1 = item_img1.getOriginalFilename();
 		String fileName2 = item_detail_img1.getOriginalFilename();

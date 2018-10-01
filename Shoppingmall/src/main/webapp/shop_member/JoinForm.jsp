@@ -3,56 +3,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	
+
 	<title>Join</title>
 <!--  
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 -->
-
-
-
 <style type="text/css">
-
-
-#upper {
- text-align:center;
-
-}
-
-body {	
-    font-size: 10px;
-}
-			
-table{
-	width:100%; 
-
-	
-}
-		
+#upper { text-align:center;}
+body { font-size: 10px;}
+table{width:100%; }
 td{
 	height: 50px;
 	border-bottom:1.3px solid #F2F2F2;
 	border-top:1.3px solid #F2F2F2;
 	font-size:10px;							
 }
-		
 #title{
 	width : 100px;
 	background-color:#FBFAFA;
     font-size: 10px;
-    
-    
-    
 }
-select{
- font-size: 12.5px;
-}
+select{font-size: 12.5px;}
 </style>
-	
-	
-		
- 
  <!-- 
 	<script type="text/javascript">
 	
@@ -74,15 +47,38 @@ select{
 			}
 		}
 	</script>
-	 
  -->
- <script type="text/javascript" src="js/jquery-3.3.1-min.js"></script>
+ <script type="text/javascript" src="../js/jquery-3.3.1-min.js"></script>
  <script type="text/javascript">
+ 	$(function() {
+ 		$("#idChecker").click(function() {
+ 			var id = $('input[name="id"]').val();
+			$.post('/Shoppingmall/ajax/idChecker.jsp', {id : id}, function(data) {
+				var valid = $(data).find('result').text();
+				valid = eval(valid);
+				
+				if(!valid) $('span#idResult').text('중복된 아이디가 없습니다.');
+ 				else $('span#idResult').text('중복된 아이디가 있습니다. 다시 입력해주세요');
+			});
+ 		});
+ 		
+ 		$("form#joinForm").on('submit', function() {
+ 			var pwd = $('input[name="pwd"]').val();
+ 			var pwdVerify = $('input[name=pwdVerify]').val();
+ 
+ 			if(pwd != pwdVerify) {
+ 				alert('비밀번호와 비밀번호 확인이 다릅니다.');
+ 				return false;
+ 			}
+ 		});
+ 	});
+ 	
+ 	<!-- 기존 코드 (2018-10-01)
  	$(document).ready(function() {
  		<!--
  		var password = $('tr:eq(1)').find('td:last > input').val();
  		var passwordVerify = $('tr:eq(2)').find('td:last').children().val();
- 		-->
+ 		
  		
  		$('form#joinForm').on('submit', function() {
  			var pwd = $('input[name="pwd"]').val();
@@ -93,7 +89,7 @@ select{
  				return false;
  			}
  		});
- 		
+ 	
  		$('input[id="idChecker"]').on('click', function() {
  			var id = $('input[name="id"]').val();
  			
@@ -106,17 +102,16 @@ select{
  			});
  		});
  	});
+ 	-->
  </script>
 </head>
 <body>
 
  <div id="upper">
-		<br><br>
-		<b><font size="3" color="">JOIN US</font></b>
-		<br><br><br>
+	<br><br><b><font size="3" color="">JOIN US</font></b><br><br><br>
 </div>
+
 <div>		
-		
 		<form method="post" action="/Shoppingmall/shop_member/join" id="joinForm">
 			<table>
 			

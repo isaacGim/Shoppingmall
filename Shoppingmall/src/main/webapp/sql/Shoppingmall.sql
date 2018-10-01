@@ -41,7 +41,7 @@ create table board_qna (
  board_qna_num  number primary key,         -- 게시물 번호 seq
  board_qna_subject varchar2(30) not null,   -- 게시물 제목
  board_qna_content varchar2(100) not null,  -- 게시물 내용
- board_qna_img varchar2(30) not null,       -- 상품 이미지
+ board_qna_img varchar2(30),       -- 상품 이미지
  board_qna_writer varchar2(30) not null,    -- 작성자
  	board_qna_ref number not null,			-- 관련글번호
 	board_qna_lev number not null,			-- 답글레벨
