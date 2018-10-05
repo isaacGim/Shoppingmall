@@ -1,0 +1,91 @@
+1. 카테고리 리스트에 있는 index값들 리스트에 담아서 넣기
+	* 카테고리를 기준으로 index값들을 얻어오는 sql문 만들기
+		* service에서 list에 담기
+		= category_id_list 
+
+<!--index를 담은 List-->
+category_id_list = select id from item where category = ?
+
+ 
+
+2. 리스트 첫 아이디에 아이템코드 알아내기/ 리스트 깊은 복사
+
+ 
+
+if(category_id_list.length() == 0) break;
+
+ 
+
+<!-- index를 담은 List의 첫번째 아이템 인덱스를 추출 -->
+
+String item_code = select item_code from item where index = category_id_list.get(0);
+	* 
+ 
+
+ 
+
+List<Integer> clone_category_id_list = new ArrayList<>();
+
+clone_category_id_list.addAll(category_id_list);
+
+ 
+
+3. 리스트를 돌면서 아이템코드와 같은 것들을 
+
+   키값 item_code value값 더한 count 로 넣고 리스트에 그 부분을 삭제한다.
+
+ 
+
+for (int index1 : clone_category_id_list) {
+
+	String item_code1 = select item_code from item where id = id1;
+
+	int count = 0;	
+
+ 
+
+	if(item_code1.equal(item_code)) {
+
+		count += select count(*) from item_list where id = id1;		
+
+		category_id_list.remove(id1);	
+
+	}
+
+ 
+
+	map.put(item_code1, count);
+
+}
+
+ 
+
+4.  
+
+for (String item_code : map.keyset()) {
+
+	String[] item_codes = new String[map.size()];
+
+	item_codes[0] = item_code;
+
+}
+
+ 
+
+for (String item_code : map.keyset()) {
+
+	int count = map.get(item_code);
+
+ 
+
+	for (String item_code1 : map.keyset() {
+
+		int count1 = map.get(item_code1);
+
+		if(count < count1) {
+
+		}
+
+	}		
+
+}

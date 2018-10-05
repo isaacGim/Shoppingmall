@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.order_list">
+
+	<!-- 주문 항목 추가하기 -->
+	<insert id="insertOrder_list" parameterType="order_listDTO">
+		INSERT INTO order_list
+		VALUES
+		(
+		order_list_num.nextval, #{order_list_quantity}, #{order_list_price},
+		#{item_index}, #{order_num}
+		)
+	</insert>
+
+	<!-- 주문 항목 리스트  -->	
+	<select id="getOrder_listList" parameterType="java.util.Map" resultType="order_listDTO">
+		<![CDATA[select * from  
+			(select rownum rn, tt.* from
+			(select * from order_list order by order_list_num desc) tt) 
+			where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 주문 항목 상세보기 -->
+	<select id="getOrder_list" parameterType="int" resultType="order_listDTO">
+		SELECT * FROM order_list WHERE order_list_num=#{order_list_num}
+	</select>
+	
+	<!-- 주문 항목 총 갯수 가지고 오기 -->
+	<select id="getOrder_listTotalA" resultType="int">
+		SELECT COUNT(*) FROM order_list
+	</select>	
+
+</mapper>
