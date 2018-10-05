@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.orders">
+	
+	<!-- 구매, 주문하기 -->
+	<insert id="insertOrders" parameterType="ordersDTO">
+		INSERT INTO orders VALUES(order_num.nextval, sysdate, #{id} )
+	</insert>
+	
+	<!--//** 구매, 주문 리스트 **/-->
+	<!-- 주문 번호로 [주문내역] 검색하기 -->	
+	<select id="getByOrder_num" parameterType="int" resultType="ordersDTO">
+		SELECT * FROM orders WHERE order_num=#{order_num}
+	</select>
+	<!-- 아이디로 [주문내역] 검색하기 -->
+	<select id="getById" parameterType="String" resultType="ordersDTO">
+		SELECT * FROM orders WHERE id=#{id}
+	</select>
+	
+	<!-- 구매 [주문내역] 리스트 -->
+	<!-- 최근 주문 내역 확인하기 startNum, endNum에 1 대입 -->
+	<select id="ordersList" parameterType="java.util.Map" resultType="ordersDTO">
+		<![CDATA[select * from  
+			(select rownum rn, tt.* from
+			(select * from orders order by order_num desc) tt) 
+			where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 구매, 주문내역 총 갯수 -->
+	<select id="getOrdersTotalA" resultType="int">
+		SELECT count(*) FROM orders
+	</select>
+	<!-- 가장 최근 구매 내역 확인 -->
+	<select id="ordersRecent" resultType="ordersDTO">
+		SELECT * FROM 
+		(SELECT * FROM item ORDER BY ROWNUM DESC) 
+		WHERE ROWNUM = 1;
+	</select>
+	
+</mapper>

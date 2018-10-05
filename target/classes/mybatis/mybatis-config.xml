@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- DTO 별명 설정 -->
+	<typeAliases>
+		<!-- 회원정보 -->
+		<typeAlias type="shop_member.bean.Shop_memberDTO" alias="shop_memberDTO"/>
+		<!-- 공지사항 -->
+		<typeAlias type="notice.bean.NoticeDTO" alias="noticeDTO"/>	
+		<!-- QnA -->
+		<typeAlias type="board_qna.bean.Board_qnaDTO" alias="board_qnaDTO"/>
+		<!-- 상품후기 -->
+		<typeAlias type="review.bean.ReviewDTO" alias="reviewDTO"/>			
+		
+		<!-- 상품 -->
+		<typeAlias type="item.bean.ItemDTO" alias="itemDTO"/>
+		<!-- 주문 -->
+		<typeAlias type="orders.bean.OrdersDTO" alias="ordersDTO"/>
+		<!-- 주문항목 -->
+		<typeAlias type="order_list.bean.Order_listDTO" alias="order_listDTO"/>
+	</typeAliases>
+	
+	<!-- Mapper 설정 -->
+	<mappers>
+		<mapper resource="mybatis/SignUp-Mapper.xml" />	<!-- 회원정보 -->
+		<mapper resource="mybatis/Login-Mapper.xml" />	<!-- 로그인 -->
+		<mapper resource="mybatis/Board-Mapper.xml" />	<!-- 각종 게시판 -->
+		<mapper resource="mybatis/Item-Mapper.xml"/> <!-- 아이템 게시판 -->
+		<mapper resource="mybatis/Orders-Mapper.xml"/>	<!-- 구매, 주문 -->
+		<mapper resource="mybatis/Order_list-Mapper.xml"/>	<!-- 구매, 주문 항목 -->
+	</mappers>
+	
+</configuration>

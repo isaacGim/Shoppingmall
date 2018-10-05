@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.item">
+
+	<!-- 상품 추가 -->
+	<insert id="insertItem" parameterType="itemDTO">
+		INSERT INTO item
+		VALUES
+		(item_index.nextval, #{item_code}, #{item_category}, #{item_detail_category},
+		#{item_name}, #{item_img}, #{item_detail_img}, #{item_content}, #{item_brand},
+		#{item_price},#{item_quantity},#{item_color},#{item_size}, sysdate)
+	</insert>
+	
+	<!-- 상품 수정 -->
+	<update id="updateItem" parameterType="java.util.Map" >
+		UPDATE item SET
+		item_code=#{item_code}, item_category=#{item_category}, 
+		item_detail_category=#{item_detail_category}, item_name=#{item_name},
+		item_img=#{item_img}, item_detail_img=#{item_detail_img}, 
+		item_content=#{item_content}, item_content=#{item_content},
+		item_brand=#{item_brand}, item_price=#{item_price}
+		WHERE item_code=#{old_item_code}
+	</update>
+	<!-- 상품 삭제 -->
+	<delete id="deleteItem" parameterType="String">
+		DELETE FROM item WHERE item_code=#{item_code}
+	</delete>
+	<!-- 상품 삭제 -->
+	<delete id="deleteItemByIndex" parameterType="int">
+		DELETE FROM item WHERE item_index=#{item_index}
+	</delete>
+	<!-- select -->
+	<!-- 아이템 보기 (상세보기) -->
+	<select id="getItem" parameterType="String" resultType="itemDTO">
+		SELECT DISTINCT
+		item_code, item_category, item_detail_category, item_name,
+		item_img, item_detail_img, item_content, item_brand, item_price
+		FROM item WHERE item_name=#{item_name}
+	</select>
+	<!-- 아이템 보기 카테고리 (대분류) -->
+	<select id="getItemsByCategory" parameterType="String" resultType="itemDTO">
+		SELECT DISTINCT
+		item_img, item_price, item_name
+		FROM item
+		WHERE item_category = #{item_category}
+	</select>
+	<!-- 아이템 보기 카데고리 (소분류) -->
+	<select id="getItemsByDetailCategory" parameterType="java.util.Map" resultType="itemDTO">
+		SELECT DISTINCT
+		item_img, item_price, item_name
+		FROM item
+		WHERE item_category = #{item_category} AND item_detail_category = #{item_detail_category}
+	</select>
+	<!-- 상품 전체 목록 보기 -->
+	<select id="getItemList" resultType="itemDTO">
+		SELECT * FROM item
+	</select>
+	<select id="getAdminItemsList" parameterType="java.util.Map" resultType="itemDTO">
+		<![CDATA[SELECT * FROM (SELECT ROWNUM rn, tt.* FROM (SELECT * FROM item) tt) 
+		WHERE rn >= #{startNum} AND rn <= #{endNum}]]>
+	</select>
+	<!-- 상품 총 갯수 구하기 -->
+	<select id="getItemsCount" resultType="int">
+		SELECT COUNT(*) FROM item
+	</select>
+	
+	<!-- 아이템 불러오기(메인화면) -->
+	<select id="getItemsToMain" resultType="itemDTO">
+	<![CDATA[SELECT *
+	FROM (SELECT DISTINCT item_img, item_price, item_name FROM item)
+	WHERE ROWNUM >=1 AND ROWNUM <= 9]]>
+	</select>
+	<!-- Best Item List -->
+	<!-- item_category 기준으로 item_index 값 불러오기 -->
+	<select id="getItemsIndex" parameterType="String" resultType="int">
+		SELECT item_index FROM item WHERE item_category=#{item_category}
+	</select>
+	<!-- item_index를 담은 item_code를 추출 -->
+	<select id="getItem_code" parameterType="int" resultType="String">
+		SELECT item_code FROM item WHERE item_index=#{item_index}
+	</select>	
+	<!-- item_index를 기준으로 count 얻기 -->
+	<select id="getItemIndexCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM order_list WHERE item_index=#{item_index}
+	</select>
+	<!-- item_category 가져오기 -->
+	<select id="getCategories" resultType="String">
+		SELECT DISTINCT item_category FROM item	
+	</select>
+	<!-- 아이템 갯수 보기 -->
+	<select id="getTotalItem" resultType="int">
+		SELECT COUNT(*) FROM (SELECT DISTINCT item_code FROM item); 
+	</select>
+	<!-- 아이템 인덱스, 사이즈 칼러 상품코드로 알아내기 -->
+	<select id="getItemIndex" parameterType="java.util.Map" resultType="int">
+		SELECT item_index FROM item WHERE 
+		item_code = #{item_code} AND item_color = #{item_color} AND item_size = #{item_size}
+	</select>
+	<!-- 아이템 알아보기 -->
+	<select id="getItemByIndex" parameterType="int" resultType="itemDTO">
+		SELECT * FROM item WHERE
+		item_index = #{item_index}
+	</select>
+</mapper>
