@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,7 @@
 <script type="text/javascript" src="../editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 					var oEditors = [];
+					var content = '${reviewDTO.review_content }';
 					$(function() {
 						nhn.husky.EZCreator.createInIFrame({
 									oAppRef : oEditors,
@@ -28,7 +30,15 @@
 										fOnBeforeUnload : function() {
 
 										}
-									}
+									},
+									fOnAppLoad : function() {
+										//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+										oEditors.getById["editor"]
+												.exec(
+														"PASTE_HTML",
+														[ content ]);
+									},
+									fCreator : "createSEditor2"
 						
 								});
 
@@ -40,11 +50,14 @@
 									$("#frm").submit();
 								});
 					});
+					
 </script>
 </head>
 <body>
 
-	<form action="/Shoppingmall/review/reviewWrite" name="frm" id="frm" method="post" enctype="multipart/form-data">
+	<form action="/Shoppingmall/review/reviewModify" name="frm" id="frm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="review_num" value="${reviewDTO.review_num}">
+		<input type="hidden" name="pg" value="${pg}">
 		<div class="example">
 			<p style="text-align:right;"><a href="../main/index.jsp">HOME</a> > REVIEW</p>
 				<!-- 게시판 제목이 출력될 곳 -->
@@ -56,7 +69,7 @@
 			<table class="board_table">
 				<tr>
 					<th class="subject" style="width: 150px;">SUBJECT
-					<td><input type="text" name="subject" class="inputTypeText" style="width: 550px;" maxLength="125" value="">
+					<td><input type="text" name="subject" class="inputTypeText" style="width: 550px;" maxLength="125" value="${reviewDTO.review_subject }">
 				</tr>
 				
 				<tr>
@@ -77,7 +90,9 @@
 				<tbody class="">
 					<tr>
 						<th scope="row" style="width: 150px;">file</th>
-						<td><input name="image" type="file"/></td>
+						<td><input name="image" type="file"/>
+							<c:if test="${reviewDTO.review_img != null}">${reviewDTO.review_img }<input type="checkbox" class="imgDelete" name="imgDelete" value="1">삭제</c:if>
+						</td>
 					</tr>
 				</tbody>
 				<tbody>
@@ -88,8 +103,7 @@
 				</tbody>
 			</table>
 			<div class="btnArea">
-	            <a id="link" href="#"><span class="list">목록</span></a>
-				<a id="link" href="#none"><span class="buttonWhite" id="save">등록</span></a>
+				<a id="link" href="#none"><span class="buttonModify" id="save">수정</span></a>
 				<a id="link" href="#"><span class="">취소</span></a>
        		</div>
 		</div>
