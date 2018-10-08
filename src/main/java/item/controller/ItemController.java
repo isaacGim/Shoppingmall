@@ -113,18 +113,44 @@ public class ItemController {
 		}
 	}
 	//////////////////////////////////////////
-	// 사용자 아이템 리스트
+	// 사용자 아이템 리스트 [대분류 + 소분류]
 	@RequestMapping(value="/item/itemCategoryList") 
 		public ModelAndView itemCategoryList(HttpServletRequest request, ModelAndView modelAndView) {
+
 		
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		String category = request.getParameter("category");
-		List<ItemDTO> list = itemservice.getItemsByCategory(category);
+		String category = request.getParameter("category");	// 대분류
+		String item_detail_category = request.getParameter("detail_category"); // 소분류
 		
-		modelAndView.addObject("list", list);
+		// 대분류
+		if(category != null && item_detail_category == "" ) {
+			List<ItemDTO> list = itemservice.getItemsByCategory(category);
+			modelAndView.addObject("list", list);
+			modelAndView.setViewName("/main/index.jsp?req=" + category);
+			System.out.println("대분류 category="+category);
+		// 소분류
+		} else if(item_detail_category != "" && category != null) {
+			List<ItemDTO> list = itemservice.getItemsByDetailCategory(category, item_detail_category);
+			modelAndView.addObject("list", list);
+			modelAndView.setViewName("/main/index.jsp?req=" + category + "&sub=" + item_detail_category);	
+			System.out.println("대분류="+category+" 소분류=" + item_detail_category);
+		}	
 		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("/main/index.jsp?req=" + category);
-	
+		return modelAndView;
+	}
+	// 사용자 아이템 리스트 [카테고리 대분류 + 소분류]
+	@RequestMapping(value="/item/itemDetailCategoryList")
+	public ModelAndView itemDetailCategoryList (HttpServletRequest request, ModelAndView modelAndView) {
+		String item_category = request.getParameter("category");
+		String item_detail_category = request.getParameter("detail_category");	
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		List<ItemDTO> list = itemservice.getItemsByDetailCategory(item_category, item_detail_category);
+		
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("list", list);
+		
+		modelAndView.setViewName("/main/index.jsp?req="+ item_detail_category);
 		return modelAndView;
 	}
 	// 아이템 상세보기

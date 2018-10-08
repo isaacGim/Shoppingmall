@@ -17,8 +17,7 @@
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function () {
-		/*
-		$('#cate1').load("../text/category.html #category1", function () {
+		$('#cate1').load("../text/category.jsp #category1", function () {
 			$(this).show();
 		});
 		
@@ -26,13 +25,12 @@
 			$('#cate2').empty().hide();
 			
 			var target = $(this).find('option:selected').attr('data-target');
-			var selector="../text/category.html "+target;
+			var selector="../text/category.jsp "+ target;
 	
 			$('#cate2').load(selector, function () {
 				$(this).show();
 			});
 		});
-		*/
 		
 		$('#insertItemCheck').click(function() {
 			if(document.insertForm.item_code.value == "") {
@@ -86,10 +84,11 @@
 			<td class="insert_list">상품코드</td>
 			<td width="80%;"><input type="text" name="item_code"></td>
 		</tr>
+		<!-- 
 		<tr>
 			<td class="insert_list">상품분류</td>		
 			<td>대분류 : <span id="cate1" >
-				<!--  <input type="text" name="item_category"> -->	
+
 					 <select name="item_category">
 						<option value="item_acc">악세사리</option>
 						<option value="item_bag">가방</option>
@@ -102,7 +101,7 @@
 				</span>
 			</td>
 			<td>소분류 : <span id="cate2" >
-				<!-- <input type="text" name="item_detail_category"> -->
+
 					<select name="item_detail_category">
 						<option value="a">1</option>
 						<option value="b">2</option>
@@ -113,8 +112,19 @@
 						<option value="g">7</option>
 					</select> 
 				</span>
-			</td>
+			</td>			
 		</tr>
+		 -->
+		<!-- 은정씨 코드 -->
+		<tr>
+         <td class="insert_list" >상품분류명</td>
+         
+         <td>대분류 : <span id="cate1" ></span>
+         	 소분류 : <span id="cate2" ></span>
+         </td>
+   
+      </tr>
+		
 		<tr>
 			<td class="insert_list">상품명</td>
 			<td width="80%;"><input type="text" name="item_name"></td>

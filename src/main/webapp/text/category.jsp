@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 대분류 -->	
+		<select name="item_category" id="category1" >
+			<option>---- 대분류선택 ----</option>
+			<option  value="item_outwear" data-target="#category2-1" >아웃웨어</option>
+			<option  value="item_tee" data-target="#category2-2" >티</option>
+			<option  value="셔츠" data-target="#category2-3" >셔츠</option>
+			<option  value="팬츠" data-target="#category2-4" >팬츠</option>
+			<option  value="item_bag" data-target="#category2-5" >가방</option>
+			<option  value="신발" data-target="#category2-6" >신발</option>
+			<option  value="악세사리" data-target="#category2-7" >악세사리</option>
+			<option  value="신상" >신상</option>
+			<option  value="세일" >세일</option>
+		</select>
+						
+
+<!--소분류  -->
+		<select name="item_detail_category" id="category2-1">
+				<option>---- 소분류선택 ----</option>
+				<option value="item_cardigan">가디건</option>
+				<option value="코트">코트</option>
+				<option  value="패딩">패딩</option>
+				<option  value="숄/판초">숄/판초</option>
+				<option value="베스트">베스트</option>
+				<option value="자켓/블레이져">자켓/블레이져</option>
+				<option value="점퍼/집업">점퍼/집업</option>
+		</select>
+		
+		<select name="category2" id="category2-2">
+				<option>---- 소분류선택 ----</option>
+				<option value="item_long">긴팔</option>
+				<option value="반팔">반팔</option>
+				<option  value="카라">카라</option>
+				<option  value="롱/루즈핏">롱/루즈핏</option>
+				<option value="민소매">민소매</option>
+				<option value="니트">니트</option>
+				<option value="슬림/베이직핏">슬림/베이직핏</option>
+				<option value="후드">후드</option>
+		</select>
+		
+		<select name="category2" id="category2-3">
+				<option>---- 소분류선택 ----</option>
+				<option value="긴팔">긴팔</option>
+				<option value="반팔">반팔</option>
+				<option  value="롱/루즈핏">롱/루즈핏</option>
+				<option  value="체크">체크</option>
+				<option value="베이직/슬림핏">베이직/슬림핏</option>
+		</select>
+		
+		<select name="category2" id="category2-4">
+				<option>---- 소분류선택 ----</option>
+				<option value="스키니">스키니</option>
+				<option value="긴바지">긴바지</option>
+				<option  value="일자바지">일자바지</option>
+				<option  value="배기바지">배기바지</option>
+				<option value="반바지">반바지</option>
+				<option value="슬랙스">슬랙스</option>
+				<option value="조거">조거</option>
+				<option value="부츠컷">부츠컷</option>
+		</select>
+		
+		<select name="category2" id="category2-5">
+				<option>---- 소분류선택 ----</option>
+				<option value="기타">기타</option>
+				<option value="백팩">백팩</option>
+				<option  value="숄더백">숄더백</option>
+				<option  value="클러치백">클러치백</option>
+				<option value="토트백">토트백</option>
+				<option value="크로스백">크로스백</option>
+		</select>
+		
+		<select name="category2" id="category2-6">
+				<option>---- 소분류선택 ----</option>
+				<option value="기성화">기성화</option>
+				<option value="수제화">수제화</option>
+				<option  value="SHOECUS">SHOECUS</option>
+		</select>
+		
+		<select name="category2" id="category2-7">
+				<option>---- 소분류선택 ----</option>
+				<option value="팔찌">팔찌</option>
+				<option value="양말">양말</option>
+				<option  value="모자">모자</option>
+				<option  value="시계">시계</option>
+				<option value="장갑/워머">장갑/워머</option>
+				<option value="지갑">지갑</option>
+				<option value="안경">안경</option>
+				<option value="기타">기타</option>
+				<option value="목걸이">목걸이</option>
+				<option value="머플러">머플러</option>
+				<option value="반지">반지</option>
+				<option value="벨트">벨트</option>
+		</select>
+</body>
+</html>

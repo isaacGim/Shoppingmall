@@ -15,7 +15,7 @@
 	<div class="title">
         
              <h2>
-                <span>NEW</span>                
+                NEW          
              </h2>   
              
     </div> <br><br><br>

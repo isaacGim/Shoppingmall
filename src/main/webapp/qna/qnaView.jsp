@@ -76,16 +76,10 @@ $(function(){
 	});
 	
 	// 대댓글등록
-	$(".rere_btn").click(function() {
-		var a = $(this).parents("div.replyWindow").find("textarea").val();
-		alert(a);
-		var url='/Shoppingmall/qna/qnaComment?comment='+ a;
-		$("form.rere_Form").attr('action', url);
-		$("form.rere_Form").attr('method', 'post');
-		$("form.rere_Form").appendTo('body');
-		$("form.rere_Form").submit();
+	$('#replyForm').on('click', '.rere_btn', function() {
+		$('.rere_btn').submit();
 	});
-});
+}); 
 
 
 </script>
@@ -128,39 +122,40 @@ $(function(){
 		</div>
 		
 		<!-- 댓글 등록된 리스트 -->
-				<c:forEach var="board_qnaDTO" items="${list }">
-					<form method="post" class="rere_Form">						
-						<div id="format">
-							<!-- 레벨을 참조해서 뛰어쓰기 넣어주세요!! -->		
-							<div class="replyBox">
-								
-								<div class="replyWriter">
-									<c:if test="${board_qnaDTO.board_qna_lev >= 2}">
-									└─
-									</c:if>
-									<span>${board_qnaDTO.board_qna_writer }</span>				
+				<div id="replyForm">
+					<c:forEach var="board_qnaDTO" items="${list }">
+						<form method="post" action="/Shoppingmall/qna/qnaComment" class="rere_Form">						
+							<div id="format">
+								<!-- 레벨을 참조해서 뛰어쓰기 넣어주세요!! -->		
+								<div class="replyBox">
+									
+									<div class="replyWriter">
+										<c:if test="${board_qnaDTO.board_qna_lev >= 2}">
+										└─
+										</c:if>
+										<span>${board_qnaDTO.board_qna_writer }</span>				
+									</div>
+									<div class="replyButtonBox">
+										<c:if test="${board_qnaDTO.board_qna_lev <= 1}">
+											<span><a class="replyButton">댓글</a></span>
+										</c:if>
+										&nbsp;								
+									</div>
+									<div class="reply">
+										<span>${board_qnaDTO.board_qna_content }</span>	
+									</div>
+								</div>	
+								<div class="replyWindow">
+									<textarea style="width: 700px; height: 50px; margin: 0;" class="replyTextArea" name="comment"></textarea><br>
+									<input type="hidden" name="no1" value="${board_qnaDTO.board_qna_num }"> 
+									<input type="hidden" name="board_qna_writer" value="${board_qnaDTO.board_qna_writer }">
+									<input type="hidden" name="pg" value="${pg }">
+									<input type="button" class="rere_btn" value="등록" style="width: 701px; margin: 0;">
 								</div>
-								<div class="replyButtonBox">
-									<c:if test="${board_qnaDTO.board_qna_lev <= 1}">
-										<span><a class="replyButton">댓글</a></span>
-									</c:if>
-									&nbsp;								
-								</div>
-								<div class="reply">
-									<span>${board_qnaDTO.board_qna_content }</span>	
-								</div>
-							</div>	
-							<div class="replyWindow">
-								<textarea style="width: 700px; height: 50px; margin: 0;" class="replyTextArea" name="comment"></textarea><br>
-								<input type="hidden" name="no1" value="${board_qnaDTO.board_qna_num }"> 
-								<input type="hidden" name="board_qna_writer" value="${board_qnaDTO.board_qna_writer }">
-								<input type="hidden" name="pg" value="${pg }">
-								<input type="button" class="rere_btn" value="등록" style="width: 701px; margin: 0;">
 							</div>
-						</div>
-					</form>
-				</c:forEach>
-		
+						</form>
+					</c:forEach>
+				</div>
 		<!--  댓글 쓰기  form 권한 있을시 -->
 		<form id="commentWriteForm" name="commentWriteForm" action="/Shoppingmall/qna/qnaComment" method="post">
 			<div class="comment">

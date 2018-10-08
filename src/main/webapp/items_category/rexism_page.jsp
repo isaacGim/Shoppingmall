@@ -15,7 +15,7 @@
 	<div class="title">
         
              <h2>
-                <span>REXISM</span>                
+               REXISM           
              </h2>   
              
     </div> <br><br><br>

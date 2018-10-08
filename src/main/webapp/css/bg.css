@@ -17,6 +17,7 @@ a{
 }
 	/* 2018-10-04 (금) */
 .title{
+	text-align:center;
     width: 10%;
     margin: 0 auto;
   } 
@@ -55,10 +56,6 @@ a{
     }    
     
      /* page 부분 css 추가 했습니다 */
-
-
-
-
 
 body{
 	height:100%;
@@ -533,7 +530,149 @@ ul .product{
 .insert_list{
 	background-color: #FBFAFA;
 }
+/*---------추가------------*/ 
 
+   .container {
+    width: 1900px;
+    margin : 0 auto;
+   }
+   .article {
+     
+     display: inline-block; 
+     padding: 5%;
+     font-size: 1rem;   /*root em: 16px; */
+   }
+   .article-a {
+      width: 700px;
+      margin-left: 100px;
+   }
+   .article-b {
+   	  width: 350px;
+   }
+   
+
+   .first {
+    margin: auto;
+    border: 2px solid #333;
+    background: #333;
+    color: #fff;
+    
+   }
+   .cart {
+    margin: auto;
+    border: 2px solid #333;
+    background: #333;
+    color: #fff;
+   }
+   .wish {
+    margin: auto;
+    border: 2px solid #333;
+    background: #333;
+    color: #fff;
+   }
+   
+   #color{
+   width: 100%
+   }
+   #size{
+   width: 100%
+   }
+  .buttonArea a:hover {
+   cursor: pointer;
+    background-color: white;
+    color:black;
+   }
+   
+   
+   .category{
+   
+    display: flex;
+   /* flex-direction: row; */
+    justify-content: center;
+    font-size: 1rem;
+    margin: 0 -5px;
+    background:white;
+    color:black;
+    } 
+   .category a:hover {
+   cursor: pointer;
+    background-color: white;
+    color:black;
+    
+   }
+    
+   .category > a {
+    width: 90px;
+    text-align: center;
+    margin : 5px;
+    background: #333;
+    color: #fff;    
+    border: 2px solid #333;
+   }
+   
+   
+   #table1 {
+   width: 80%;
+   border: 1px solid #444444;
+   font-size: 14px;
+   border-collapse: collapse;
+   margin: auto;
+   text-align: center;
+   }
+  #table1 tr, #table1 td{
+   border: 1px solid; 
+   padding: 5px;
+   }
+ 
+   
+   .detail_img{
+   text-align:center;
+   border-radius: 8px;
+   } 
+  
+   #re{
+   text-align:center;
+   width:90%;
+   }
+   
+   #td1{
+   background:#D3D3D3
+   }
+   #td2{
+   background:#F5F5F5
+   }
+   #reviewpart{
+   text-align:center;
+   }
+   #qnapart{
+   text-align:center;
+   }
+   #hit{
+    background:#F5F5F5
+   }
+  
+		
+    #subject {
+  		width: 80%;
+   	    font-size: 14px;
+        border-collapse: collapse;
+        margin: auto;
+        text-align: center;  
+        
+    
+    } 
+     #subject th{
+        background-color: #F5F5F5
+     }
+     #subject {
+       height: 50px;
+	   border-bottom:1.3px solid #F2F2F2;
+      border-top:1.3px solid #F2F2F2;
+	  
+     }
+     #detail_sub{
+       width: 75%;
+     }
 
 /* board css start*/
 .board_table {	display: block;  text-align: center;  border-top:1px solid #d1cfcf;}

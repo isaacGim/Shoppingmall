@@ -15,7 +15,7 @@
 	<div class="title">
         
              <h2>
-                <span>SALE</span>                
+               SALE               
              </h2>   
              
     </div> <br><br><br> 

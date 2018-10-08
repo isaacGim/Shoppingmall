@@ -18,6 +18,8 @@
     <mvc:resources location="/editor/" mapping="/editor/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources location="/storage/" mapping="/storage/**"/>
+    <mvc:resources location="/text/" mapping="/text/**"/>
+    
     
 	<context:component-scan base-package="shop_member.controller"/>
 	<context:component-scan base-package="item.controller"/>

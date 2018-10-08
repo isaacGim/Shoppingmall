@@ -161,11 +161,23 @@ var SHOW_DURATION = 200;
 			$('.close').css('visibility','visible');
 			$('.bar_right').removeClass('close_bar');
 		});
+		
 		// 카테고리 클릭시 아이템 리스트 보여주기
 		$(".categorylink").click(function(){
+			// 카테고리를 가져온다.
 			var category = $(this).attr('name');
-			location.href="/Shoppingmall/item/itemCategoryList?category=" + category +"&pg=1";
+			location.href="/Shoppingmall/item/itemCategoryList?category=" + category + "&detail_category="+detail_category+"&pg=1";
 		});
+		
+		// 소분류 카테고리 값 가져오기
+		var detail_category = "";
+		$(".categorylink_detail").click(function(){
+			detail_category = $(this).attr("name");
+		});	
+
+		
+		
+
  });
 	</script>
 </head>
@@ -249,91 +261,91 @@ var SHOW_DURATION = 200;
 		<div class="main_category">
 			<ul>
 			<li style="width:114px"  class="category1" name="item_bestitem"><a onmouseover="this.innerHTML='베스트아이템'" onmouseout="this.innerHTML='BEST ITEM'">BEST ITEM</a>
-				<ul class=" sub sub1">
-					<li class="categorylink" name="item_out"><a>아웃웨어</a></li>
-					<li class="categorylink" name="item_pants"><a>팬츠</a></li>
-					<li class="categorylink" name="item_shirts"><a>셔츠</a></li>
-					<li class="categorylink" name="item_t"><a>티</a></li>
-					<li class="categorylink" name="item_shoes"><a>신발</a></li>
-					<li class="categorylink" name="item_acc"><a>악세사리</a></li>
-					<li class="categorylink" name="item_bag"><a>가방</a></li>
+				<ul class="sub sub1">
+					<li class="categorylink_detail" name="item_out"><a>아웃웨어</a></li>
+					<li class="categorylink_detail" name="item_pants"><a>팬츠</a></li>
+					<li class="categorylink_detail" name="item_shirts"><a>셔츠</a></li>
+					<li class="categorylink_detail" name="item_t"><a>티</a></li>
+					<li class="categorylink_detail" name="item_shoes"><a>신발</a></li>
+					<li class="categorylink_detail" name="item_acc"><a>악세사리</a></li>
+					<li class="categorylink_detail" name="item_bag"><a>가방</a></li>
 				</ul>
 			</li>
 			<li style="width:114px" class="category2 categorylink" name="item_outwear"><a onmouseover="this.innerHTML='아웃웨어'" onmouseout="this.innerHTML='OUTWEAR'">OUTWEAR</a>
 				<ul class="sub sub2">
-					<li class="categorylink" name="item_cardigan"><a>가디건</a></li>
-					<li class="categorylink" name="item_coat"><a>코트</a></li>
-					<li class="categorylink" name="item_padding"><a>패딩</a></li>
-					<li class="categorylink" name="item_poncho"><a>숄/판초</a></li>
-					<li class="categorylink" name="item_vest"><a>베스트</a></li>
-					<li class="categorylink" name="item_jacket"><a>자켓/블레이져</a></li>
-					<li class="categorylink" name="item_zipup"><a>점퍼/집업</a></li>
+					<li class="categorylink_detail" name="item_cardigan"><a>가디건</a></li>
+					<li class="categorylink_detail" name="item_coat"><a>코트</a></li>
+					<li class="categorylink_detail" name="item_padding"><a>패딩</a></li>
+					<li class="categorylink_detail" name="item_poncho"><a>숄/판초</a></li>
+					<li class="categorylink_detail" name="item_vest"><a>베스트</a></li>
+					<li class="categorylink_detail" name="item_jacket"><a>자켓/블레이져</a></li>
+					<li class="categorylink_detail" name="item_zipup"><a>점퍼/집업</a></li>
 				</ul>
 			</li>
 			<li style="width:72px" class="category3 categorylink" name="item_tee"><a onmouseover="this.innerHTML='티'" onmouseout="this.innerHTML='TEE'">TEE</a>
 				<ul class="sub sub3">
-					<li class="categorylink" name="item_long"><a>긴팔</a></li>
-					<li class="categorylink" name="item_half"><a>반팔</a></li>
-					<li class="categorylink" name="item_collar"><a>카라</a></li>
-					<li class="categorylink" name="item_losefit"><a>롱/루즈핏</a></li>
-					<li class="categorylink" name="item_sleeveless"><a>민소매</a></li>
-					<li class="categorylink" name="item_knit"><a>니트</a></li>
-					<li class="categorylink" name="item_slim"><a>슬림/베이직핏</a></li>
-					<li class="categorylink" name="item_hood"><a>후 드</a></li>
+					<li class="categorylink_detail" name="item_long"><a>긴팔</a></li>
+					<li class="categorylink_detail" name="item_half"><a>반팔</a></li>
+					<li class="categorylink_detail" name="item_collar"><a>카라</a></li>
+					<li class="categorylink_detail" name="item_losefit"><a>롱/루즈핏</a></li>
+					<li class="categorylink_detail" name="item_sleeveless"><a>민소매</a></li>
+					<li class="categorylink_detail" name="item_knit"><a>니트</a></li>
+					<li class="categorylink_detail" name="item_slim"><a>슬림/베이직핏</a></li>
+					<li class="categorylink_detail" name="item_hood"><a>후 드</a></li>
 				</ul>
 			</li>
 	            <li style="width:94px" class="category4 categorylink" name="item_shirts"><a onmouseover="this.innerHTML='셔츠'" onmouseout="this.innerHTML='SHIRTS'">SHIRTS</a>
 	        	<ul class="sub sub4">
-					<li class="categorylink" name="item_longs"><a>긴팔</a></li>
-					<li class="categorylink" name="item_halfs"><a>반팔</a></li>
-					<li class="categorylink" name="item_losefits"><a>롱/루즈핏</a></li>
-					<li class="categorylink" name="item_checks"><a>체크</a></li>
-					<li class="categorylink" name="item_slims"><a>베이직/슬림핏</a></li>
+					<li class="categorylink_detail" name="item_longs"><a>긴팔</a></li>
+					<li class="categorylink_detail" name="item_halfs"><a>반팔</a></li>
+					<li class="categorylink_detail" name="item_losefits"><a>롱/루즈핏</a></li>
+					<li class="categorylink_detail" name="item_checks"><a>체크</a></li>
+					<li class="categorylink_detail" name="item_slims"><a>베이직/슬림핏</a></li>
 				</ul>   
 	            </li>  
 	            <li style="width:90px" class="category5 categorylink" name="item_pants"><a onmouseover="this.innerHTML='팬츠'" onmouseout="this.innerHTML='PANTS'">PANTS</a>
 	        	<ul class="sub sub5">
-					<li class="categorylink" name="item_skinny"><a>스키니</a></li>
-					<li class="categorylink" name="item_longp"><a>긴바지</a></li>
-					<li class="categorylink" name="item_onep"><a>일자바지</a></li>
-					<li class="categorylink" name="item_baggyp"><a>배기바지</a></li>
-					<li class="categorylink" name="item_halfp"><a>반바지</a></li>
-					<li class="categorylink" name="item_slexp"><a>슬랙스</a></li>
-					<li class="categorylink" name="item_joggerp"><a>조거</a></li>
-					<li class="categorylink" name="item_bootsp"><a>부츠컷</a></li>
+					<li class="categorylink_detail" name="item_skinny"><a>스키니</a></li>
+					<li class="categorylink_detail" name="item_longp"><a>긴바지</a></li>
+					<li class="categorylink_detail" name="item_onep"><a>일자바지</a></li>
+					<li class="categorylink_detail" name="item_baggyp"><a>배기바지</a></li>
+					<li class="categorylink_detail" name="item_halfp"><a>반바지</a></li>
+					<li class="categorylink_detail" name="item_slexp"><a>슬랙스</a></li>
+					<li class="categorylink_detail" name="item_joggerp"><a>조거</a></li>
+					<li class="categorylink_detail" name="item_bootsp"><a>부츠컷</a></li>
 				</ul>    
 	            </li>
 	            <li style="width:76px" class="category6 categorylink" name="item_bag"><a onmouseover="this.innerHTML='가방'" onmouseout="this.innerHTML='BAG'">BAG</a>
 	        	<ul class="sub sub6">
-					<li class="categorylink" name="item_etc"><a>기타</a></li>
-					<li class="categorylink" name="item_bag"><a>백팩</a></li>
-					<li class="categorylink" name="item_shoulder"><a>숄더백</a></li>
-					<li class="categorylink" name="item_clutch"><a>클러치백</a></li>
-					<li class="categorylink" name="item_tod"><a>토트백</a></li>
-					<li class="categorylink" name="item_cross"><a>크로스백</a></li>
+					<li class="categorylink_detail" name="item_etc"><a>기타</a></li>
+					<li class="categorylink_detail" name="item_back"><a>백팩</a></li>
+					<li class="categorylink_detail" name="item_shoulder"><a>숄더백</a></li>
+					<li class="categorylink_detail" name="item_clutch"><a>클러치백</a></li>
+					<li class="categorylink_detail" name="item_tote"><a>토트백</a></li>
+					<li class="categorylink_detail" name="item_cross"><a>크로스백</a></li>
 				</ul>    
 	            </li>
 	            <li style="width:91px" class="category7 categorylink" name="item_shoes"><a onmouseover="this.innerHTML='신발'" onmouseout="this.innerHTML='SHOES'">SHOES</a>
 	        	<ul class="sub sub7">
-					<li class="categorylink" name="item_shoes"><a>기성화</a></li>
-					<li class="categorylink" name="item_hand"><a>수제화</a></li>
-					<li class="categorylink" name="item_shoescus"><a>SHOECUS</a></li>
+					<li class="categorylink_detail" name="item_ready"><a>기성화</a></li>
+					<li class="categorylink_detail" name="item_hand"><a>수제화</a></li>
+					<li class="categorylink_detail" name="item_shoescus"><a>SHOECUS</a></li>
 				</ul>    
 	            </li>   
 	            <li style="width:123px" class="category8 categorylink" name="item_acc"><a onmouseover="this.innerHTML='악세사리'" onmouseout="this.innerHTML='ACCESSORY'">ACCESSORY</a>
 	        	<ul class="sub sub8">
-					<li class="categorylink" name="item_bracelet"><a>팔찌</a></li>
-					<li class="categorylink" name="item_socks"><a>양말</a></li>
-					<li class="categorylink" name="item_cap"><a>모자</a></li>
-					<li class="categorylink" name="item_watch"><a>시계</a></li>
-					<li class="categorylink" name="item_glove"><a>장갑/워머</a></li>
-					<li class="categorylink" name="item_wallet"><a>지갑</a></li>
-					<li class="categorylink" name="item_glasses"><a>안경</a></li>
-					<li class="categorylink" name="item_etcc"><a>기타</a></li>
-					<li class="categorylink" name="item_necklace"><a>목걸이</a></li>
-					<li class="categorylink" name="item_muffler"><a>머플러</a></li>
-					<li class="categorylink" name="item_ring"><a>반지</a></li>
-					<li class="categorylink" name="item_belt"><a>벨트</a></li>
+					<li class="categorylink_detail" name="item_bracelet"><a>팔찌</a></li>
+					<li class="categorylink_detail" name="item_socks"><a>양말</a></li>
+					<li class="categorylink_detail" name="item_cap"><a>모자</a></li>
+					<li class="categorylink_detail" name="item_watch"><a>시계</a></li>
+					<li class="categorylink_detail" name="item_glove"><a>장갑/워머</a></li>
+					<li class="categorylink_detail" name="item_wallet"><a>지갑</a></li>
+					<li class="categorylink_detail" name="item_glasses"><a>안경</a></li>
+					<li class="categorylink_detail" name="item_etcc"><a>기타</a></li>
+					<li class="categorylink_detail" name="item_necklace"><a>목걸이</a></li>
+					<li class="categorylink_detail" name="item_muffler"><a>머플러</a></li>
+					<li class="categorylink_detail" name="item_ring"><a>반지</a></li>
+					<li class="categorylink_detail" name="item_belt"><a>벨트</a></li>
 				</ul>    
 	            </li>   
 	            <li style="width:115px" class="category9"><a onmouseover="this.innerHTML='신상5%할인'" onmouseout="this.innerHTML='NEW'">NEW</a></li>
@@ -466,7 +478,16 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../items_category/item_tee.jsp" />
 		</c:if>
 		
-		<!-- 성품 카테고리별 리스트 [소분류] -->
+		<!-- 성품 카테고리별 리스트 [대분류 + 소분류] -->
+		<!-- 악세사리 + 벨트 -->
+		<c:if test="${param.req=='item_acc' && param.sub=='item_belt'}">
+			<jsp:include page="../items_category/acc/item_belt.jsp" />
+		</c:if>
+
+		
+		
+		
+		
 		<!-- 사용자 아이템 상세보기 -->
 		<c:if test="${param.req=='itemView'}">
 			<jsp:include page="../item/itemView.jsp" />
