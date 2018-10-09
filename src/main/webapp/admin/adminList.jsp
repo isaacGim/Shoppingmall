@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지 리스트</title>
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {

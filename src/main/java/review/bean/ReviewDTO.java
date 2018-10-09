@@ -12,6 +12,53 @@ public class ReviewDTO {
 	private int review_lev;				// 답글레벨
 	private int review_seq;				// 관련글중 출력순서
 	private String review_date;			// 작성일
+	private int next_review_seq;
+	private int prev_review_seq;
+	private String next_review_subject;
+	private String prev_review_subject;
+	
+	@Override
+	public String toString() {
+		return "ReviewDTO [review_num=" + review_num + ", review_subject=" + review_subject + ", review_content="
+				+ review_content + ", review_img=" + review_img + ", review_writer=" + review_writer + ", review_grade="
+				+ review_grade + ", review_like=" + review_like + ", review_ref=" + review_ref + ", review_lev="
+				+ review_lev + ", review_seq=" + review_seq + ", review_date=" + review_date + ", next_review_seq="
+				+ next_review_seq + ", prev_review_seq=" + prev_review_seq + ", next_review_subject="
+				+ next_review_subject + ", prev_review_subject=" + prev_review_subject + "]";
+	}
+
+	public int getNext_review_seq() {
+		return next_review_seq;
+	}
+
+	public void setNext_review_seq(int next_review_seq) {
+		this.next_review_seq = next_review_seq;
+	}
+
+	public int getPrev_review_seq() {
+		return prev_review_seq;
+	}
+
+	public void setPrev_review_seq(int prev_review_seq) {
+		this.prev_review_seq = prev_review_seq;
+	}
+
+	public String getNext_review_subject() {
+		return next_review_subject;
+	}
+
+	public void setNext_review_subject(String next_review_subject) {
+		this.next_review_subject = next_review_subject;
+	}
+
+	public String getPrev_review_subject() {
+		return prev_review_subject;
+	}
+
+	public void setPrev_review_subject(String prev_review_subject) {
+		this.prev_review_subject = prev_review_subject;
+	}
+
 	public int getReview_num() {
 		return review_num;
 	}

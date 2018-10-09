@@ -9,6 +9,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bg.css" />
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$(".item").click(function() {
+			var item_name = $(this).find('.item_name').text();
+			alert("itemList");
+			alert(item_name);
+			location.href="/Shoppingmall/item/itemView?item_name="+ item_name +"&pg=1";
+		});
+		
+	});
+</script>
 </head>
 <body>
 <form action="">
@@ -47,9 +60,9 @@
 						<c:forEach var="itemDTO" items="${list }">
 							<li id="item" class="item">
 								<div class="box">
-									<a href="" name="BoxName"><img src="../storage/${itemDTO.item_img }" class="thumb"> </a>
+									<a name="BoxName"><img src="../storage/${itemDTO.item_img }" class="thumb"> </a>
 									<p class="name">
-										<a href=""><span style="font-size: 11px; color: #333333;">${itemDTO.item_name }<br><br></span> </a>
+										<a href=""><span style="font-size: 11px; color: #333333;" class="item_name">${itemDTO.item_name }<br><br></span> </a>
 									</p>
 									<p class="icon"></p>
 									<ul class="product ">

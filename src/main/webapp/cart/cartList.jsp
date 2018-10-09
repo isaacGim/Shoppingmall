@@ -187,10 +187,10 @@ td {border-bottom: 2px solid seashell; }
 		<div id="cartTop">
 			<ul class="tab">
 				<li class="selected">
-					<a href="#">국내배송상품 (0)</a>
+					<a href="#return false;">국내배송상품 (0)</a>
 				</li>
 				<li>
-					<a href="#">해외배송상품 (0)</a>
+					<a href="#return false;">해외배송상품 (0)</a>
 				</li>
 			</ul>
 			<p class="pix">장바구니에 담긴 상품은 10일 동안 보관됩니다.</p>

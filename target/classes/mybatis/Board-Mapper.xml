@@ -143,10 +143,14 @@
 		UPDATE review SET 
 		review_subject=#{review_subject}, 
 		review_content=#{review_content},
-		review_img=#{review_img }, 
-		review_writer=#{review_writer },
-		review_grade=#{review_grade },
-		WHERE board_qna_num=#{board_qna_num }
+		review_img=#{review_img},
+		review_grade=#{review_grade }
+		WHERE review_num=#{review_num }
+	</update>
+	
+	<!-- Review 사진 삭제   -->
+	<update id="updateReviewImage" parameterType="int">
+		UPDATE review SET review_img=null WHERE review_num=#{review_num}
 	</update>
 	
 	<!-- Review 글 삭제 -->
@@ -156,7 +160,7 @@
 	
 	<!-- Review lev , re_seq     // seq 값 증가 -->
 	<update id="updateReview_reSeq" parameterType="java.util.Map" >
-		update review set review_seq=review_seq+1 where review_ref=#{review_ref  } and review_seq>=#{review_seq  }
+		update review set review_seq =review_seq +1 where review_ref =#{review_ref  } and review_seq >=#{review_seq  }
 	</update>
 	
 	<!--  select 문 -->
@@ -170,13 +174,19 @@
 	
 	<!-- Review 글 상세보기 -->
 	<select id="reviewView" parameterType="int" resultType="reviewDTO">
-		SELECT * FROM review WHERE review_num=#{review_num}
+		<![CDATA[SELECT * FROM (SELECT review_num, review_subject, review_content, review_img,review_writer, 
+		review_grade, review_like, review_ref, review_lev, review_seq, review_date,
+      	LEAD(review_num,1) OVER(ORDER BY review_num) NEXT_REVIEW_SEQ,
+     	LEAD(review_subject,1) OVER(ORDER BY review_num) NEXT_REVIEW_SUBJECT,
+      	Lag(review_num,1) OVER(ORDER BY review_num) PREV_REVIEW_SEQ,
+      	Lag(review_subject,1) OVER(ORDER BY review_num) PREV_REVIEW_SUBJECT
+		FROM review) 
+		WHERE review_num = #{review_num}]]>
 	</select>
 	
 	<!-- Review 총 글 수  얻어오기-->	
 	<select id="getReviewTotalA" resultType="int">
 		SELECT count(*) FROM review
 	</select>
-	
 	
 </mapper>

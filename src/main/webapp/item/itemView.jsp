@@ -1,244 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-   a{text-decoration:none;}
-   body {
-      margin: 0;
-      font-size: 2em;
-   }
-   .container {
-    width: 1000px;
-    margin : 0 auto;
-    font-size: 0;
-    
-   }
-   .item {
-     
-     display: inline-block; 
-     vertical-align: top;
-     padding: 5%;
-     font-size: 1rem;   /*root em: 16px; */
-   }
-   .item-a {
-      background-color: 
-      width: 30%;
-     
-   
-   }
-   .item-b {
-      background-color:  
-   	  width: 50%;
-   }
-   
-  /* .button{
-   margin :0;
-   width: 396px;
-   border:2px solid #333;
-   background: #333;
-   color: #fff;
-   }*/
-   /*.button {
-   margin: 0;
-   border: 0;
-   font-size: 1rem;
-   position: relative;
-   top: 50%;
-   left: 50%;
-   margin:top: -25px;
-   margin-left: -100px;
-   width: 200px;
-   height: 50px;
-   text-align: center;
-   box-sizing: border-box;
-   }*/
-   .btnArea a:first-child {
-    margin: auto;
-    width: 400px;
-    border: 2px solid #333;
-    background: #333;
-    color: #fff;
-    
-   }
-   .btnArea a.cart {
-    margin: auto;
-    border: 2px solid #333;
-    background: #333;
-    color: #fff;
-   }
-   .btnArea a.wish {
-    margin: auto;
-    border: 2px solid #333;
-    background: #333;
-    color: #fff;
-   }
-   
-   #color{
-   width: 100%
-   }
-   #size{
-   width: 100%
-   }
-  .btnArea a:hover {
-   /* cursor: pointer; */
-    background-color: white;
-    color:black;
-   }
-   .category{
-   
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 1rem;
-    margin: 0 -5px;
-    
-    background:white;
-    color:black;
-    
-   } 
-   .category > a {
-    border-style: groove;
-    justify-content: center;
-    margin : 5px;
-    width: 90px;
-    text-align: center;
-   }
-   .category a.detail {
-     background: #333;
-     color: #fff;
-   }
-   .category a.read1 {
-     background: #333;
-     color: #fff;
-   }
-   .category a.review1 {
-     background: #333;
-     color: #fff;
-   }
-   .category a.qa1{
-     background: #333;
-     color: #fff;
-   }
-   .category a.with1{
-     background: #333;
-     color: #fff;
-   }
-   
-   
-   #table1 {
-   width: 80%;
-   border: 1px solid #444444;
-   font-size: 14px;
-   border-collapse: collapse;
-   margin: auto;
-   text-align: center;
-   }
-  #table1 tr, #table1 td{
-   border: 1px solid; 
-   padding: 5px;
-   }
- 
-   
-   .img{
-   text-align:center;
-   border-radius: 8px;
-   } 
-  
-   #re{
-   text-align:center;
-   width:90%;
-   }
-   
-   #td1{
-   background:#D3D3D3
-   }
-   #td2{
-   background:#F5F5F5
-   }
-   #reviewpart{
-   text-align:center;
-   }
-   #qnapart{
-   text-align:center;
-   }
-   #hit{
-    background:#F5F5F5
-   }
-  /* tbody {
-   	    height: 50px;
-		border-bottom:1.3px solid #F2F2F2;
-		border-top:1.3px solid #F2F2F2;
-		font-size:10px;	*/
-		
-    #subject {
-  		width: 80%;
-   	/*	border: 1px solid #444444; */
-   		font-size: 14px;
-        border-collapse: collapse;
-        margin: auto;
-        text-align: center;  
-        
-    
-    } 
-     #subject th{
-        background-color: #F5F5F5
-     }
-     #subject {
-       height: 50px;
-	   border-bottom:1.3px solid #F2F2F2;
-      border-top:1.3px solid #F2F2F2;
-	  
-     }
-     #sub{
-       width: 75%;
-     }
-   }
-</style>
+<title>itemView</title>
+<link rel="stylesheet" type="text/css" href="../css/bg.css">
 </head>
 <body>
 	<div class="container">
-		<section class="item item-a">
-		<img src="/img/bestitem/outwear/allround.jpg" width="400" height="500">	 
-		<img src="">
+		<section class="article article-a">
+		<img src="../storage/${itemDTO.item_img }" width="620" height="650">	 
+		
 	
 	
 		</section>
-		<section class="item item-b">
-		   <h1>"item_name"</h1>
+		<section class="article article-b">
+		   <h1>${itemDTO.item_name }</h1>
 		   <hr width=100%>
-           <p>판매가: </p>
-           <p>적립금: </p>
-           <p>상품코드: </p>
+           <p>판매가:&nbsp;&nbsp;  ${itemDTO.item_price }원  </p>
+           <p>상품코드:&nbsp;&nbsp;  ${itemDTO.item_price} </p>
            <p>영문상품명: </p>
-           <p>국내 해외배송 </p>
+           <p><input type="radio" name="delivery" value="국내">국내
+              <input type="radio" name="delivery" value="해외배송">해외배송
+           </p>
            <hr width=100%> 
            <select id="color" name="item_color">
 							<option value="color" selected disabled hidden>-[필수] 옵션을 선택해 주세요-</option>
-							<option value="1">"  "</option>
-							<option value="2">"  "</option>
+							<option value="black">블랙(Black)</option>
+							<option value="white">화이트(White)</option>
+
 			</select>	<br>
 			<select id="size" name="item_size">
 							<option value="size" selected disabled hidden>-[필수] 옵션을 선택해 주세요-</option>
-							<option value="3">"  "</option>
-							<option value="4">"  "</option>
+							<option value="Free">Free Size</option>
+							<option value="4">""</option>
 							
 			
 			</select>			
 		    <hr width=100%>
             <p>TOTAL:   </p>
 		    <hr width=100%>
-		<!-- 
-		    <div class="btnArea">
-			<button class="button">바로 구매하기</button> <br>
-			<button class="button">장바구니 담기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="button">관심상품 등록</button>
-			</div>
-	   	 -->
-	   	    <div class="btnArea">
-	   	      <a href="#" class="fist">BUY IT NOW</a>
+	   	    <div class="buttonArea">
+	   	      <a href="#" class="first">BUY IT NOW</a>
 	   	      <a href="#" class="cart">ADD CART</a>
 	   	      <a href="#" class="wish">WISH LIST</a>
 	   	    </div>
@@ -298,23 +103,15 @@
 	 
 	 
 	 
-	 </div><br><br><br>
-	 <div class="img"><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="img/rexism.jpg">
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="img/detail.jpg">
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="" width="700" height="700"><br><br>
-	 	<img src="img/check_color.jpg" width="700">
-	 	<img src="img/model.gif">
+	 </div><br>
+	 <div class="detail_img"><br>
+	 	<!--<img src="" width="700" height="700"><br><br> -->
+	    <img src="../image/item_Detail/rexism.jpg"><br><br>     
+	    <img src="../image/item_Detail/	detail.jpg"><br><br>
+   		<img src="../storage/${itemDTO.item_img }" width="800px" height="1100px"><br><br>
+	    <img src="../storage/${itemDTO.item_detail_img }" width="800px" height="1100px"><br><br>
+	 	<img src="../image/item_Detail/check_color.jpg" width="700"><br><br>
+	 	<img src="../image/item_Detail/model.gif">
 	 	
 	 </div><br><br>
 	 <div class="category">
@@ -328,7 +125,7 @@
 	<a name="re"></a>
 	<div id="re">
 	
-	 <img src="img/readme.jpg">
+	 <img src="../image/item_Detail/readme.jpg">
 	</div>
 	 </div><br><br>
 	 <div class="category">
@@ -405,7 +202,7 @@
 	   
 		    <tr>
 		        <th>NO</th>
-		        <th id="sub">SUBJECT</th>
+		        <th id="detail_sub">SUBJECT</th>
 		        <th>name</th>
 		        <th>DATE</th>
 		        <th>HIT</th>
@@ -450,28 +247,6 @@
 	 
 	 <a name="qa"></a>
 	 
-	 <!--  <table class="subject">
-	   <tbody>
-		    <tr id="hit">
-		        <td id="no">NO</td><td id="su">SUBJECT</td><td id="na">name</td><td id="da">DATE</td><td id="hit">HIT</td>
-		    <tr>
-		        <td></td><td></td><td></td><td></td><td></td>
-		    </tr>	  
-		    <tr>
-		        <td></td><td></td><td></td><td></td><td></td>
-		    </tr>
-		    <tr>
-		        <td></td><td></td><td></td><td></td><td></td>
-		    </tr>   
-		    <tr>
-		        <td></td><td></td><td></td><td></td><td></td>
-		    </tr>
-		    <tr>
-		        <td></td><td></td><td></td><td></td><td></td>
-		    </tr>
-	   </tbody>
-	 </table>
-	 -->
 	 </div><br>
      <div class="category">
 	 	<a href="#de" class="detail1">DETAIL</a>

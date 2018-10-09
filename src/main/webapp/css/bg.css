@@ -674,28 +674,6 @@ ul .product{
        width: 75%;
      }
 
-/* board css start*/
-.board_table {	display: block;  text-align: center;  border-top:1px solid #d1cfcf;}
-.board_table tr:after {	content: ''; display: block; float: none; clear: both;}
-.board_table thead, tbody, tr {display: block; width: 100%; border-bottom: 1px solid #d1cfcf;}
-.board_table td, th {display: block; float: left; padding: 10px 0;}
-.example{text-align: center; width: 1500px; margin: 0 auto; margin-bottom: 100px;}
-.board_title{text-align: center; font-size: 15px; font-family: 'Gaegu', cursive;}
-.titleHr{border-bottom: 3px double #d1cfcf;	width: 500px;}
-.boardList{font-family: 'Gaegu', cursive;}
-.boardResult{font-family:'Jua', sans-serif; font-size: 10px;}
-.write_btn{	margin-left: 90%;}
-
-/* board_view css start*/
-
-/* 버튼------------------------------------- */
-.btnArea { text-align: right; margin-top: 20px;}
-.btnArea .left { float: left;}
-.btnArea span {	border: 1px groove #d1cfcf; font-size: 20px; background-color: #ffffff; border-radius: 10px; width: 40px;}
-#link:link{color: black; text-decoration: none;}
-#link:visited {color: black; text-decoration: none;}
-#link:achive {color: black; text-decoration: none;}
-
 
 
 

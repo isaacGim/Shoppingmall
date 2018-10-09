@@ -188,7 +188,7 @@ var SHOW_DURATION = 200;
 				<ul>
 					<li onclick="location.href='/Shoppingmall/notice/noticeList?pg=1'" style="list-style:none;  width: 85px;" class="list" onmouseover="this.innerHTML='공지사항'" onmouseout="this.innerHTML='NOTICE|'" >NOTICE|</li>
 					<li onclick="location.href='/Shoppingmall/qna/qnaList?pg=1'" style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='문의사항'" onmouseout="this.innerHTML='Q&amp;A|'" >Q&amp;A|</li>
-					<li style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='구매후기'" onmouseout="this.innerHTML='REVIEW|'"><a href="" >REVIEW|</a></li>
+					<li onclick="location.href='/Shoppingmall/review/reviewList?pg=1'" style="list-style:none; width: 85px;" class="list" onmouseover="this.innerHTML='구매후기'" onmouseout="this.innerHTML='REVIEW|'">REVIEW|</li>
 					<li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='자주묻는질문'" onmouseout="this.innerHTML='FAQ|'"><a href="" >FAQ|</a></li>
        			    <li style="list-style:none; width: 100px;" class="list" onmouseover="this.innerHTML='도매제휴문의'" onmouseout="this.innerHTML='WHOLESALE|'"><a href="" >WHOLESALE|</a></li>
 				</ul>
@@ -208,7 +208,7 @@ var SHOW_DURATION = 200;
 						<a href="/Shoppingmall/shop_member/logout" class="log" >logout|</a> 
 					</c:when>
 				</c:choose>
-				<a href="" class="cart">cart <span class="orderCart">(0)|</span> </a>
+				<a href="/Shoppingmall/order_list/cartList" class="cart">cart <span class="orderCart">(0)|</span> </a>
 				<a href="">order|</a>
 			</div>
 		</div>
@@ -391,6 +391,16 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../shop_member/JoinForm.jsp" />
 		</c:if>
 		
+		<!-- 마이페이지 -->
+		<c:if test="${param.req=='myPage'}">
+			<jsp:include page="../shop_member/myPage.jsp" />
+		</c:if>
+		
+		<!-- 마이페이지 -->
+		<c:if test="${param.req=='cartList'}">
+			<jsp:include page="../cart/cartList.jsp" />
+		</c:if>
+		
 		<!-- 상품등록화면 -->
 		<c:if test="${param.req=='insertForm'}">
 			<jsp:include page="/admin/insertForm.jsp" />
@@ -442,6 +452,41 @@ var SHOW_DURATION = 200;
 			<jsp:include page="../qna/qnaView.jsp" />
 		</c:if>
 		
+		<!-- review list  -->
+		<c:if test="${param.req=='reviewList' }">
+			<jsp:include page="../review/reviewList.jsp"/>
+		</c:if>
+		
+		<!-- reviewWriteForm  -->
+		<c:if test="${param.req=='reviewWriteForm' }">
+			<jsp:include page="../review/reviewWriteForm.jsp"/>
+		</c:if>
+		
+		<!-- reviewWrite  -->
+		<c:if test="${param.req=='reviewWrite' }">
+			<jsp:include page="../review/reviewWrite.jsp"/>
+		</c:if>
+		
+		<!-- reviewView  -->
+		<c:if test="${param.req=='reviewView' }">
+			<jsp:include page="../review/reviewView.jsp"/>
+		</c:if>
+		
+		<!-- reviewDelete  -->
+		<c:if test="${param.req=='reviewDelete' }">
+			<jsp:include page="../review/reviewDelete.jsp"/>
+		</c:if>
+		
+		<!-- reviewModify  -->
+		<c:if test="${param.req=='reviewModify' }">
+			<jsp:include page="../review/reviewModify.jsp"/>
+		</c:if>
+		
+		<!-- reviewModifyForm  -->
+		<c:if test="${param.req=='reviewModifyForm' }">
+			<jsp:include page="../review/reviewModifyForm.jsp"/>
+		</c:if>
+		
 		<!-- 상품 카테고리별 리스트 [대분류] -->
 		<!-- 악세사리 -->
 		<c:if test="${param.req=='item_acc'}">
@@ -479,14 +524,14 @@ var SHOW_DURATION = 200;
 		</c:if>
 		
 		<!-- 성품 카테고리별 리스트 [대분류 + 소분류] -->
-		<!-- 악세사리 + 벨트 -->
+		<!-- 악세사리 + 벨트 
 		<c:if test="${param.req=='item_acc' && param.sub=='item_belt'}">
 			<jsp:include page="../items_category/acc/item_belt.jsp" />
-		</c:if>
-
-		
-		
-		
+		</c:if> -->
+		<!-- 아웃웨어 + 가디건 
+		<c:if test="${param.req=='item_acc' && param.sub=='item_cardigan'}">
+			<jsp:include page="../items_category/acc/item_belt.jsp" />
+		</c:if> -->
 		
 		<!-- 사용자 아이템 상세보기 -->
 		<c:if test="${param.req=='itemView'}">

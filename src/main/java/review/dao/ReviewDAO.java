@@ -21,7 +21,11 @@ public class ReviewDAO {
 	}
 	// Review 글 수정
 	public int updateReview(ReviewDTO reviewDTO) {
-		return sqlSession.insert("mybatis.board.updateReview", reviewDTO);
+		return sqlSession.update("mybatis.board.updateReview", reviewDTO);
+	}
+	// Review imagefile 수정
+	public int updateReviewImage(int review_num) {
+		return sqlSession.update("mybatis.board.updateReviewImage", review_num);
 	}
 	// Review 글 삭제
 	public int deleteReview(int review_num) {
@@ -50,4 +54,5 @@ public class ReviewDAO {
 	public int getReviewTotalA () {
 		return sqlSession.selectOne("mybatis.board.getReviewTotalA");
 	}
+	
 }

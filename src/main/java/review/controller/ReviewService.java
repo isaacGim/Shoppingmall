@@ -20,4 +20,6 @@ public interface ReviewService {
 	public ReviewDTO reviewView (int review_num);
 	// 총글수 얻어오기
 	public int getReviewTotalA ();
+	// image수정
+	public int updateReviewImage(int review_num);
 }

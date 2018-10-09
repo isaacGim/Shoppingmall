@@ -30,6 +30,13 @@
 			$('#cate2').load(selector, function () {
 				$(this).show();
 			});
+			
+			$('#cate2').change(function() {
+				var a= $("#cate1>select option:selected").val();
+				var b= $("#cate2>select").val();
+				alert(a + b);
+				
+			});
 		});
 		
 		$('#insertItemCheck').click(function() {

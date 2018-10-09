@@ -65,7 +65,8 @@ public class ItemController {
 		// 파일처리할 경로
 		String filePath = 
 				//"C:\\Users\\user\\git\\Shoppingmall\\Shoppingmall\\src\\main\\webapp\\storage";
-				"E:\\java_web_4\\spring\\workspace\\Shoppingmall\\src\\main\\webapp\\storage";
+				//"E:\\java_web_4\\spring\\workspace\\Shoppingmall\\src\\main\\webapp\\storage";
+		"C:\\Users\\isaac\\Desktop\\Shoppingmall\\src\\main\\webapp\\storage";
 		// 파일 이름
 		String fileName1 = item_img1.getOriginalFilename();
 		String fileName2 = item_detail_img1.getOriginalFilename();
@@ -128,13 +129,16 @@ public class ItemController {
 			modelAndView.addObject("list", list);
 			modelAndView.setViewName("/main/index.jsp?req=" + category);
 			System.out.println("대분류 category="+category);
-		// 소분류
-		} else if(item_detail_category != "" && category != null) {
+		
+			// 소분류
+		} else if(item_detail_category != null && category != null) {
 			List<ItemDTO> list = itemservice.getItemsByDetailCategory(category, item_detail_category);
 			modelAndView.addObject("list", list);
 			modelAndView.setViewName("/main/index.jsp?req=" + category + "&sub=" + item_detail_category);	
 			System.out.println("대분류="+category+" 소분류=" + item_detail_category);
 		}	
+		
+		
 		modelAndView.addObject("pg", pg);
 		return modelAndView;
 	}
@@ -156,8 +160,16 @@ public class ItemController {
 	// 아이템 상세보기
 	@RequestMapping(value="/item/itemView")
 	public ModelAndView itemView (HttpServletRequest request, ModelAndView modelAndView) {
+		System.out.println("view 실행");
+		
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		String item_name = request.getParameter("item_name");
+		
+		System.out.println("pg="+pg);
+		System.out.println("item_name="+item_name);
+		
+		
+		
 		ItemDTO itemDTO = new ItemDTO();
 		itemDTO = itemservice.getItem(item_name);
 		

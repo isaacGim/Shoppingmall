@@ -49,4 +49,10 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDAO.getReviewTotalA();
 	}
 
+	@Override
+	public int updateReviewImage(int review_num) {
+		return reviewDAO.updateReviewImage(review_num);
+	}
+
+
 }

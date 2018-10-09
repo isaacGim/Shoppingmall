@@ -78,9 +78,9 @@ rollback;
 
 create table review (
   review_num number primary key,          -- 게시물 번호 seq
-  review_subject varchar2(30) not null,   -- 게시물 제목
-  review_content varchar2(100) not null,  -- 게시물 내용
-  review_img varchar2(30) not null,       -- 상품 이미지
+  review_subject varchar2(100) not null,   -- 게시물 제목 ★ (100)
+  review_content varchar2(4000) not null,  -- 게시물 내용 ★ (4000)
+  review_img varchar2(30),       -- 상품 이미지 ★ not null 제거
   review_writer varchar2(30) not null,    -- 작성자 
   review_grade varchar2(30) not null,     -- GRADE // 별점
   review_like number,                     -- LIKE
