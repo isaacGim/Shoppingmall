@@ -7,8 +7,31 @@
 <meta charset="UTF-8">
 <title>QnA View</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/board.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
+<style type="text/css">
+.replyBox {
+	width: 760px;
+	height: 50px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+.replyWriter {
+	text-align: left;
+	float: left;
+	margin-bottom: 10px;
+}
+.replyButtonBox {
+	text-align: right;
+}
+.reply {
+	text-align: left;
+}
+.space {
+	clear:both;
+	padding-left: 10px;
+}
+</style>
 <script type="text/javascript">
 //commentWrite 버튼 클릭시 이동 
 $(function(){
@@ -31,7 +54,20 @@ $(function(){
 		location.href="/Shoppingmall/qna/qnaList?pg="+${pg} ;
 	});
 	
-
+	// 이전 글
+	/*	
+ 	$(".prev").click(function() {
+		var no = ${prevBoard_qnaDTO.board_qna_num };
+		location.href = "/Shoppingmall/qna/qnaView?no="+ no +"&pg="+ ${pg};
+	});  
+	*/
+	// 다음 글
+	/*
+	$(".next").click(function() {
+		var no = ${nextBoard_qnaDTO.board_qna_num };
+		location.href = "/Shoppingmall/qna/qnaView?no="+ no +"&pg="+ ${pg};
+	});
+	*/
 	
 	
 	$('.replyWindow').hide();
@@ -55,7 +91,7 @@ $(function(){
 	<div class="example">
 		<p style="text-align:right;"><a href="../main/index.jsp">HOME</a> > Q & A</p>
 		<!-- 게시판 제목이 출력될 곳 -->
-		<div class="board_title">
+		<div class="title">
 			<p>Q & A</p>
 			<hr class="titleHr">
 			<p>궁금한점이 생기셨나요? 무엇이든 물어보세요. 빠르고 친절한 답변 드리겠습니다.</p>
@@ -114,11 +150,7 @@ $(function(){
 							<div class="replyWindow">
 								<textarea style="width: 700px; height: 50px; margin: 0;" class="replyTextArea" name="comment"></textarea><br>
 								<input type="hidden" name="no" value="${board_qnaDTO.board_qna_num }"> 
-<<<<<<< HEAD
 								<input type="hidden" name="board_qna_writer" value="${sessionScope.member_name }">
-=======
-								<input type="hidden" name="board_qna_writer" value="${board_qnaDTO.board_qna_writer }">
->>>>>>> branch 'master' of https://github.com/isaacGim/Shoppingmall
 								<input type="hidden" name="pg" value="${pg }">
 								<input type="button" class="rere_btn" value="등록" style="width: 701px; margin: 0;">
 							</div>
