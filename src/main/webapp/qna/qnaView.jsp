@@ -37,7 +37,7 @@
 $(function(){
 	// 댓글 등록
 	$(".commentWrite").click(function(){
-		$("#commentWriteForm").submit();
+		$('#commentWriteForm').submit();
 	});
 	
 	// 게시글 삭제 버튼
@@ -77,9 +77,11 @@ $(function(){
 	
 	// 대댓글등록
 	$('#replyForm').on('click', '.rere_btn', function() {
-		$('.rere_btn').submit();
+		var data = $(this).parents('.replyWindow').find('textarea').val();
+		alert(data);
+		$(this).parents('.rere_Form').submit();
 	});
-}); 
+});
 
 
 </script>
@@ -122,40 +124,40 @@ $(function(){
 		</div>
 		
 		<!-- 댓글 등록된 리스트 -->
-				<div id="replyForm">
-					<c:forEach var="board_qnaDTO" items="${list }">
-						<form method="post" action="/Shoppingmall/qna/qnaComment" class="rere_Form">						
-							<div id="format">
-								<!-- 레벨을 참조해서 뛰어쓰기 넣어주세요!! -->		
-								<div class="replyBox">
-									
-									<div class="replyWriter">
-										<c:if test="${board_qnaDTO.board_qna_lev >= 2}">
-										└─
-										</c:if>
-										<span>${board_qnaDTO.board_qna_writer }</span>				
-									</div>
-									<div class="replyButtonBox">
-										<c:if test="${board_qnaDTO.board_qna_lev <= 1}">
-											<span><a class="replyButton">댓글</a></span>
-										</c:if>
-										&nbsp;								
-									</div>
-									<div class="reply">
-										<span>${board_qnaDTO.board_qna_content }</span>	
-									</div>
-								</div>	
-								<div class="replyWindow">
-									<textarea style="width: 700px; height: 50px; margin: 0;" class="replyTextArea" name="comment"></textarea><br>
-									<input type="hidden" name="no1" value="${board_qnaDTO.board_qna_num }"> 
-									<input type="hidden" name="board_qna_writer" value="${board_qnaDTO.board_qna_writer }">
-									<input type="hidden" name="pg" value="${pg }">
-									<input type="button" class="rere_btn" value="등록" style="width: 701px; margin: 0;">
+			<div id="replyForm">
+				<c:forEach var="board_qnaDTO" items="${list }">
+					<form method="post" action="/Shoppingmall/qna/qnaComment" class="rere_Form">						
+						<div id="format">
+							<!-- 레벨을 참조해서 뛰어쓰기 넣어주세요!! -->		
+							<div class="replyBox">
+								
+								<div class="replyWriter">
+									<c:if test="${board_qnaDTO.board_qna_lev >= 2}">
+									└─
+									</c:if>
+									<span>${board_qnaDTO.board_qna_writer }</span>				
 								</div>
+								<div class="replyButtonBox">
+									<c:if test="${board_qnaDTO.board_qna_lev <= 1}">
+										<span><a class="replyButton">댓글</a></span>
+									</c:if>
+									&nbsp;								
+								</div>
+								<div class="reply">
+									<span>${board_qnaDTO.board_qna_content }</span>	
+								</div>
+							</div>	
+							<div class="replyWindow">
+								<textarea style="width: 700px; height: 50px; margin: 0;" class="replyTextArea" name="comment"></textarea><br>
+								<input type="hidden" name="no" value="${board_qnaDTO.board_qna_num }"> 
+								<input type="hidden" name="board_qna_writer" value="${sessionScope.member_name }">
+								<input type="hidden" name="pg" value="${pg }">
+								<input type="button" class="rere_btn" value="등록" style="width: 701px; margin: 0;">
 							</div>
-						</form>
-					</c:forEach>
-				</div>
+						</div>
+					</form>
+				</c:forEach>
+			</div>
 		<!--  댓글 쓰기  form 권한 있을시 -->
 		<form id="commentWriteForm" name="commentWriteForm" action="/Shoppingmall/qna/qnaComment" method="post">
 			<div class="comment">
@@ -168,7 +170,7 @@ $(function(){
 						<input id="comment_password" name="comment_password" value="" type="hidden" />
 						<input name="board_qna_writer" value="${sessionScope.member_name }" type="hidden">
 						<input name="pg" value="${pg }" type="hidden">
-						<input name="no" value="${no }" type="hidden">
+						<input name="no" id="no" value="${no }" type="hidden">
 					</p>
 					<div class="view" style="margin: 0 auto;">
 						<textarea id="comment" name="comment" style="width:1400px; height:50px; resize: none;"></textarea>

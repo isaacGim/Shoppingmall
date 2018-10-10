@@ -29,7 +29,7 @@
 				var index = $(item).parents('tr').find('.index').text();
 				indexArray.push(index);
 			});	
-			
+			// 여러개 담아서 Controller로 보냄..
 			$.ajax({
 				url : '/Shoppingmall/admin/deleteItem',
 		        type : 'POST',

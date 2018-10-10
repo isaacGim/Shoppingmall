@@ -97,7 +97,8 @@ public class Shop_memberController {
 		shop_memberDTO.setBank_name(request.getParameter("bank_name"));
 		shop_memberDTO.setAccount_num(request.getParameter("account_num"));
 		int result = memberService.insertShopMember(shop_memberDTO);
-		if(result > 0) modelAndView.setViewName("redirect:../main/index.jsp");
+		modelAndView.addObject("result", result);
+		if(result > 0) modelAndView.setViewName("redirect:../main/index.jsp?req=joinOk");
 		else modelAndView.setViewName("/main/index.jsp?req=joinForm");
 //		if(result > 0) modelAndView.setViewName("/main/index?req=joinOk");
 //		else modelAndView.setViewName("/main/index?req=joinFail");	

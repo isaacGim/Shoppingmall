@@ -390,6 +390,11 @@ var SHOW_DURATION = 200;
 		<c:if test="${param.req=='joinForm'}">
 			<jsp:include page="../shop_member/JoinForm.jsp" />
 		</c:if>
+				
+		<!-- 회원가입 완료 확인 -->
+		<c:if test="${param.req=='joinOk'}">
+			<jsp:include page="../shop_member/joinOk.jsp" />
+		</c:if>
 		
 		<!-- 마이페이지 -->
 		<c:if test="${param.req=='myPage'}">

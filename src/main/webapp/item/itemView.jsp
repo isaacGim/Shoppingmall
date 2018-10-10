@@ -7,15 +7,50 @@
 <meta charset="UTF-8">
 <title>itemView</title>
 <link rel="stylesheet" type="text/css" href="../css/bg.css">
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 카트에 추가하기 클릭한 경우.
+		$(".cart").click(function() {
+			if( null == $("select[name='item_color']").val()) {
+				alert("색상을 선택해주세요.");	
+			} else if( null == $("select[name='item_size']").val()) {
+				alert("사이즈를 선택해주세요.")
+			} else {
+				$("#itemForm").submit();
+			}
+		});
+		
+		// 수량입력창 숨기기
+		$("div#item_info").hide();
+		// 색상 및 사이즈 선택 시 수량입력창 추가
+		$("select[name='item_size']").change(function() {
+			if( null != $("select[name='item_color']").val()) {
+				$("div#item_info").show();
+			}
+		});
+		$("select[name='item_color']").change(function() {
+			if( null != $("select[name='item_size']").val()) {
+				$("div#item_info").show();
+			}
+		});
+		
+		// 수량 변경시 total 가격 변경
+		$("input#item_qty").change(function() {
+			
+		});
+		
+	});
+</script>
 </head>
 <body>
 	<div class="container">
 		<section class="article article-a">
 		<img src="../storage/${itemDTO.item_img }" width="620" height="650">	 
-		
-	
-	
 		</section>
+		
+		<!-- 데이터를 처리해야 하기 때문에 Form태그가 없어서 Form태그 만듦 -->
+
 		<section class="article article-b">
 		   <h1>${itemDTO.item_name }</h1>
 		   <hr width=100%>
@@ -31,24 +66,38 @@
 							<option value="black">블랙(Black)</option>
 							<option value="white">화이트(White)</option>
 
+
 			</select>	<br>
 			<select id="size" name="item_size">
 							<option value="size" selected disabled hidden>-[필수] 옵션을 선택해 주세요-</option>
 							<option value="Free">Free Size</option>
-							<option value="4">""</option>
 							
-			
+							
 			</select>			
+		
+			<!-- 색상 + 사이즈 선택 시 수량 입력창 띄움.. -->
+			<div name="item_info" id="item_info" style="border:1px solid lightgray; padding:10px; margin: 2px; margin-top: 3px;">
+				${itemDTO.item_name } 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" size="1" name="item_qty" id="item_qty" value="1">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				${itemDTO.item_price }원
+			</div>
+			
 		    <hr width=100%>
-            <p>TOTAL:   </p>
+            <p>TOTAL: <span class="">${itemDTO.item_price}</span></p>
 		    <hr width=100%>
 	   	    <div class="buttonArea">
 	   	      <a href="#" class="first">BUY IT NOW</a>
-	   	      <a href="#" class="cart">ADD CART</a>
+	   	      <a href="#none" class="cart">ADD CART</a>
 	   	      <a href="#" class="wish">WISH LIST</a>
 	   	    </div>
 	
 		</section>
+		<form action="/Shoppingmall/order_list/cartList" method="post" id="itemForm" name="itemForm">
+		</form> <!-- Form 태그 -->	
+
+
 
 	</div>
     <div class="category">
