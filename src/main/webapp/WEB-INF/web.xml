@@ -36,8 +36,11 @@
   <filter-mapping>
   	<filter-name>filterLogin</filter-name>
   	<url-pattern>/qna/qnaWriteForm</url-pattern>
+<<<<<<< HEAD
  <!--  	<url-pattern>/qna/qnaView</url-pattern>
   	<url-pattern>/review/reviewView</url-pattern>  -->
+=======
+>>>>>>> branch 'master' of https://github.com/isaacGim/Shoppingmall
   	<url-pattern>/review/reviewWriteForm</url-pattern>
   	<url-pattern>/order_list/cartList</url-pattern>
   </filter-mapping>

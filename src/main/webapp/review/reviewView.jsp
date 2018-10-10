@@ -127,7 +127,6 @@ $(function(){
 					<li class="next"><strong>다음글</strong>
 					<a href="#none">${reviewDTO.next_review_subject }</a></li>
 				</c:if>
-				
 			</ul>
 		</div>
 		
