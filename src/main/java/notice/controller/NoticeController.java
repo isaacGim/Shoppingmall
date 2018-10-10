@@ -52,19 +52,6 @@ public class NoticeController {
 		noticeDTO = noticeService.noticeView(notice_num);
 		noticeService.updateHit(notice_num);
 		
-		// 이전 글
-		int prev = notice_num + 1;
-		NoticeDTO prevNoticeDTO = new NoticeDTO();
-		prevNoticeDTO = noticeService.noticeView(prev);
-		
-		// 다음 글
-		int next = notice_num - 1;
-		NoticeDTO nextNoticeDTO = new NoticeDTO();
-		nextNoticeDTO = noticeService.noticeView(next);
-		
-		modelAndView.addObject("prevNoticeDTO", prevNoticeDTO);	// 이전 글	
-		modelAndView.addObject("nextNoticeDTO", nextNoticeDTO);	// 다음 글	
-		
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("noticeDTO", noticeDTO);
 		modelAndView.setViewName("/main/index.jsp?req=noticeView");

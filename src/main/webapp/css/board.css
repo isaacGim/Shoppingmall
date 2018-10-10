@@ -5,9 +5,9 @@
 .board_table thead, tbody, tr {display: block; width: 100%; border-bottom: 1px solid #d1cfcf;}
 .board_table td, th {display: block; float: left; padding: 10px 0;}
 .board_title{text-align: center; font-size: 15px; padding-bottom: 30px;}
-.titleHr{border-bottom: 3px double #d1cfcf;	width: 600px;}
+.titleHr{border-bottom: 3px double #d1cfcf;}
 .boardList{font-family: 'Gaegu', cursive;}
-.boardResult{font-family:'Jua', sans-serif; font-size: 10px;}
+.boardResult{font-family: 'Hi Melody', cursive; font-size: 20px; font-weight: normal;}
 .write_btn{	margin-left: 90%;}
 
 /* board_view css start*/
@@ -60,4 +60,25 @@
 	.comment_item .writer input {vertical-align: middle;}
 	.comment_item .writer .name {color: #222; font-weight: bold; font-size: 14px} 
 
-
+/*  대댓글 css  */
+.replyBox {
+	width: 760px;
+	height: 50px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+.replyWriter {
+	text-align: left;
+	float: left;
+	margin-bottom: 10px;
+}
+.replyButtonBox {
+	text-align: right;
+}
+.reply {
+	text-align: left;
+}
+.space {
+	clear:both;
+	padding-left: 10px;
+}

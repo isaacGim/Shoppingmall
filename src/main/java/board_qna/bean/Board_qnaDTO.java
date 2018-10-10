@@ -11,6 +11,37 @@ public class Board_qnaDTO {
 	private int board_qna_seq;			// 관련글중 출력순서
 	private String board_qna_date;		// 작성일
 	private String board_qna_pwd;		// 패스워드
+	private int next_qna_seq;
+	private int prev_qna_seq;
+	private String next_qna_subject;
+	private String prev_qna_subject;
+	
+	
+	
+	public int getNext_qna_seq() {
+		return next_qna_seq;
+	}
+	public void setNext_qna_seq(int next_qna_seq) {
+		this.next_qna_seq = next_qna_seq;
+	}
+	public int getPrev_qna_seq() {
+		return prev_qna_seq;
+	}
+	public void setPrev_qna_seq(int prev_qna_seq) {
+		this.prev_qna_seq = prev_qna_seq;
+	}
+	public String getNext_qna_subject() {
+		return next_qna_subject;
+	}
+	public void setNext_qna_subject(String next_qna_subject) {
+		this.next_qna_subject = next_qna_subject;
+	}
+	public String getPrev_qna_subject() {
+		return prev_qna_subject;
+	}
+	public void setPrev_qna_subject(String prev_qna_subject) {
+		this.prev_qna_subject = prev_qna_subject;
+	}
 	public String getBoard_qna_pwd() {
 		return board_qna_pwd;
 	}

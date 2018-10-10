@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/bg.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 
 <script type="text/javascript">
 	$(function() {
@@ -19,7 +19,6 @@
 		// 글 상세보기 화면
 		$(".qnaSubject").click(function() {
 			var no = $(this).parents("tr.boardResult").find(".no").text();
-			alert("no=" + no);
 			location.href="/Shoppingmall/qna/qnaView?no="+ no + "&pg=" + ${pg};
 		});
 	});

@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>qna write form</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/bg.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 
 <script type="text/javascript" src="../editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -88,18 +88,6 @@
 						name="content" style="width:100%; height:400px;"></textarea>
 					</td>
 				</tr>
-				
-				<!-- 
-				<tr class="ucc">
-					<th scope="row">UCC URL</th>
-					<td><input id="ucc" name="ucc" size="35" fw-filter=""
-						fw-label="UCC URL" value="" type="text" />&nbsp;&nbsp;&nbsp;<label
-						class="size" for="ucc_width">넓이</label><input id="ucc_width"
-						name="ucc_width" size="2" value="400" type="text" />&nbsp;&nbsp;&nbsp;<label
-						class="size" for="ucc_height">높이</label><input id="ucc_height"
-						name="ucc_height" size="2" value="300" type="text" /></td>
-				</tr>
-				 -->
 				 
 				<tbody class="">
 					<tr>

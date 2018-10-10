@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>notice list</title>
-<link rel="stylesheet" type="text/css" href="../css/bg.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
