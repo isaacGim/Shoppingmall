@@ -36,8 +36,6 @@
   <filter-mapping>
   	<filter-name>filterLogin</filter-name>
   	<url-pattern>/qna/qnaWriteForm</url-pattern>
-  	<url-pattern>/qna/qnaView</url-pattern>
-  	<url-pattern>/review/reviewView</url-pattern>
   	<url-pattern>/review/reviewWriteForm</url-pattern>
   	<url-pattern>/order_list/cartList</url-pattern>
   </filter-mapping>

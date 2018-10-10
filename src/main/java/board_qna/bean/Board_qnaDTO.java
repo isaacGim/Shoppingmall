@@ -16,10 +16,7 @@ public class Board_qnaDTO {
 	private String next_qna_subject;
 	private String prev_qna_subject;
 	
-<<<<<<< HEAD
 	
-=======
->>>>>>> branch 'master' of https://github.com/isaacGim/Shoppingmall
 	public int getNext_qna_seq() {
 		return next_qna_seq;
 	}

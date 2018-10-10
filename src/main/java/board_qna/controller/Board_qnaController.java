@@ -150,7 +150,7 @@ public class Board_qnaController {
 		int ref = board_qnaDTO.getBoard_qna_ref();
 		int lev = board_qnaDTO.getBoard_qna_lev();
 		int seq = board_qnaDTO.getBoard_qna_seq();
-		System.out.println(seq);
+		System.out.println(seq);	
 		//댓글 DTO를 삽입하기 위에 REF/LEV/SEQ를 조작하고 UPDATE를 한다.
 		int re_lev = lev + 1;
 		int re_seq = seq + 1;

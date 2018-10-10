@@ -36,6 +36,17 @@
 
 //commentWrite 버튼 클릭시 이동 
 $(function(){
+	
+	$(".prev").click(function() {
+		var prevNum = ${board_qnaDTO.prev_qna_seq };
+		location.href = "/Shoppingmall/qna/qnaView?no="+ prevNum +"&pg="+${pg};
+	});
+	
+	$(".next").click(function() {
+		var nextNum = ${board_qnaDTO.next_qna_seq };
+		location.href = "/Shoppingmall/qna/qnaView?no="+ nextNum +"&pg="+${pg};
+	});
+	
 	// 댓글 등록
 	$(".commentWrite").click(function(){
 		$('#commentWriteForm').submit();
@@ -55,22 +66,6 @@ $(function(){
 		location.href="/Shoppingmall/qna/qnaList?pg="+${pg} ;
 	});
 	
-	// 이전 글
-	/*	
- 	$(".prev").click(function() {
-		var no = ${prevBoard_qnaDTO.board_qna_num };
-		location.href = "/Shoppingmall/qna/qnaView?no="+ no +"&pg="+ ${pg};
-	});  
-	*/
-	// 다음 글
-	/*
-	$(".next").click(function() {
-		var no = ${nextBoard_qnaDTO.board_qna_num };
-		location.href = "/Shoppingmall/qna/qnaView?no="+ no +"&pg="+ ${pg};
-	});
-	*/
-	
-	
 	$('.replyWindow').hide();
 	$('.replyButton').click(function() {
 		$(this).parents('#format').find('.replyWindow').toggle();
@@ -82,6 +77,8 @@ $(function(){
 		alert(data);
 		$(this).parents('.rere_Form').submit();
 	});
+	
+	
 });
 
 
@@ -92,7 +89,7 @@ $(function(){
 	<div class="example">
 		<p style="text-align:right;"><a href="../main/index.jsp">HOME</a> > Q & A</p>
 		<!-- 게시판 제목이 출력될 곳 -->
-		<div class="title">
+		<div class="board_title">
 			<p>Q & A</p>
 			<hr class="titleHr">
 			<p>궁금한점이 생기셨나요? 무엇이든 물어보세요. 빠르고 친절한 답변 드리겠습니다.</p>
@@ -189,20 +186,18 @@ $(function(){
 		</div>
 		
 		<div class="movement">
-		<!-- 
 			<ul>
-				<c:if test="${prevBoard_qnaDTO.board_qna_subject != null }">
+				<c:if test="${board_qnaDTO.prev_qna_subject != null }">
 					<li class="prev"><strong>이전글</strong>
-					<a href="#none">${prevBoard_qnaDTO.board_qna_subject }</a></li>
+					<a href="#none">${board_qnaDTO.prev_qna_subject }</a></li>
 				</c:if>
-				
-				<c:if test="${nextBoard_qnaDTO.board_qna_subject != null }">
+				<c:if test="${board_qnaDTO.next_qna_subject != null }">
 					<li class="next"><strong>다음글</strong>
-					<a>${nextBoard_qnaDTO.board_qna_subject}</a></li>
+					<a href="#none">${board_qnaDTO.next_qna_subject }</a></li>
 				</c:if>
 			</ul>
-		-->
 		</div>
+		
 	</div>
 
 </body>
