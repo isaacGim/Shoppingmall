@@ -30,6 +30,18 @@
   	<url-pattern>/main/index.jsp</url-pattern>
   </filter-mapping>
   <filter>
+  	<filter-name>filterLogin</filter-name>
+  	<filter-class>filter.FilterLogin</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filterLogin</filter-name>
+  	<url-pattern>/qna/qnaWriteForm</url-pattern>
+  	<url-pattern>/qna/qnaView</url-pattern>
+  	<url-pattern>/review/reviewView</url-pattern>
+  	<url-pattern>/review/reviewWriteForm</url-pattern>
+  	<url-pattern>/order_list/cartList</url-pattern>
+  </filter-mapping>
+  <filter>
   	<filter-name>characterEncoding</filter-name>
   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
   	<init-param>

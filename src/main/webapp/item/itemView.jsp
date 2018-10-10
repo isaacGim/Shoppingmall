@@ -12,13 +12,13 @@
 	$(function() {
 		// 카트에 추가하기 클릭한 경우.
 		$(".cart").click(function() {
-			if( null == $("select[name='item_color']").val()) {
+			 if( null == $("select[name='item_color']").val()) {
 				alert("색상을 선택해주세요.");	
 			} else if( null == $("select[name='item_size']").val()) {
 				alert("사이즈를 선택해주세요.")
 			} else {
 				$("#itemForm").submit();
-			}
+			} 
 		});
 		
 		// 수량입력창 숨기기
@@ -34,10 +34,12 @@
 				$("div#item_info").show();
 			}
 		});
-		
+	
 		// 수량 변경시 total 가격 변경
 		$("input#item_qty").change(function() {
-			
+			var qty = $(this).val();	// 변경된 수량
+			var total_price = qty * ${itemDTO.item_price };	// 토탈 금액
+			$("span.total_price").html(total_price);
 		});
 		
 	});
@@ -45,14 +47,15 @@
 </head>
 <body>
 	<div class="container">
-		<section class="article article-a">
+		<section class="article article-a" style="float: left;">
 		<img src="../storage/${itemDTO.item_img }" width="620" height="650">	 
 		</section>
 		
 		<!-- 데이터를 처리해야 하기 때문에 Form태그가 없어서 Form태그 만듦 -->
-
+		<form action="/Shoppingmall/order_list/cartList" method="post" id="itemForm" name="itemForm">
+		
 		<section class="article article-b">
-		   <h1>${itemDTO.item_name }</h1>
+		   <h1 name="item_name">${itemDTO.item_name }</h1>
 		   <hr width=100%>
            <p>판매가:&nbsp;&nbsp;  ${itemDTO.item_price }원  </p>
            <p>상품코드:&nbsp;&nbsp;  ${itemDTO.item_price} </p>
@@ -85,7 +88,7 @@
 			</div>
 			
 		    <hr width=100%>
-            <p>TOTAL: <span class="">${itemDTO.item_price}</span></p>
+            <p>TOTAL: <span class="total_price" name="total_price">${itemDTO.item_price}</span></p>
 		    <hr width=100%>
 	   	    <div class="buttonArea">
 	   	      <a href="#" class="first">BUY IT NOW</a>
@@ -94,13 +97,12 @@
 	   	    </div>
 	
 		</section>
-		<form action="/Shoppingmall/order_list/cartList" method="post" id="itemForm" name="itemForm">
 		</form> <!-- Form 태그 -->	
 
 
 
 	</div>
-    <div class="category">
+    <div class="category" style="clear:both;">
 	 	<a href="#de" class="detail">DETAIL</a>
 	 	<a href="#re" class="read">READ ME</a>
 	 	<a href="#rev" class="review">REVIEW</a>

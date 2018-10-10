@@ -17,7 +17,23 @@ public class Order_listController {
 	@RequestMapping(value="/order_list/cartList")
 	public ModelAndView cartList(HttpServletRequest request, ModelAndView modelAndView) {
 		System.out.println("cartList");
-
+		
+		// 장바구니 담을 정보 가져오기
+		String item_name = request.getParameter("item_name");
+		String item_color = request.getParameter("item_color");
+		String item_size = request.getParameter("item_size");
+		String item_qty = request.getParameter("item_qty");
+		String item_price = request.getParameter("item_price");
+		String total_price= request.getParameter("total_price");
+		
+		System.out.println("item_name : "+ item_name);
+		System.out.println("item_color : "+ item_color);
+		System.out.println("item_size : "+ item_size);
+		System.out.println("item_qty : "+ item_qty);
+		System.out.println("item_price : "+ item_price);
+		System.out.println("total_price : "+ total_price);
+		
+		
 		modelAndView.setViewName("/main/index.jsp?req=cartList");
 		return modelAndView;
 	}
