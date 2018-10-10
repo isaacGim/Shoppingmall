@@ -54,11 +54,15 @@
 		<!-- 데이터를 처리해야 하기 때문에 Form태그가 없어서 Form태그 만듦 -->
 		<form action="/Shoppingmall/order_list/cartList" method="post" id="itemForm" name="itemForm">
 		
+		<input type="hidden" name="item_name" value="${itemDTO.item_name }">
+		<input type="hidden" name="item_price" value="${itemDTO.item_price }">
+		<input type="hidden" name="item_code" value="${itemDTO.item_code }">
+		
 		<section class="article article-b">
-		   <h1 name="item_name">${itemDTO.item_name }</h1>
+		   <h1>${itemDTO.item_name }</h1>
 		   <hr width=100%>
-           <p>판매가:&nbsp;&nbsp;  ${itemDTO.item_price }원  </p>
-           <p>상품코드:&nbsp;&nbsp;  ${itemDTO.item_price} </p>
+           <p>판매가:&nbsp;&nbsp;  ${itemDTO.item_price }원  </p> 
+           <p>상품코드:&nbsp;&nbsp;  ${itemDTO.item_code} </p>
            <p>영문상품명: </p>
            <p><input type="radio" name="delivery" value="국내">국내
               <input type="radio" name="delivery" value="해외배송">해외배송

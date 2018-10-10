@@ -20,17 +20,20 @@ public class Order_listController {
 		
 		// 장바구니 담을 정보 가져오기
 		String item_name = request.getParameter("item_name");
+		String item_code = request.getParameter("item_code");
+		int item_price = Integer.parseInt(request.getParameter("item_price"));
 		String item_color = request.getParameter("item_color");
 		String item_size = request.getParameter("item_size");
-		String item_qty = request.getParameter("item_qty");
-		String item_price = request.getParameter("item_price");
-		String total_price= request.getParameter("total_price");
+		int item_qty = Integer.parseInt(request.getParameter("item_qty"));
+		int total_price = item_price * item_qty;
 		
+		System.out.println("---");
 		System.out.println("item_name : "+ item_name);
+		System.out.println("item_code : "+ item_code);
+		System.out.println("item_price : "+ item_price);
 		System.out.println("item_color : "+ item_color);
 		System.out.println("item_size : "+ item_size);
 		System.out.println("item_qty : "+ item_qty);
-		System.out.println("item_price : "+ item_price);
 		System.out.println("total_price : "+ total_price);
 		
 		
