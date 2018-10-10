@@ -109,6 +109,7 @@ public class Board_qnaController {
 		modelAndView.setViewName("/main/index.jsp?req=qnaView");
 		return modelAndView;
 	}
+	
 	// qna 삭제하기
 	@Transactional
 	@RequestMapping(value="/qna/qnaDelete")
@@ -124,6 +125,7 @@ public class Board_qnaController {
 		modelAndView.setViewName("redirect:/qna/qnaList?pg="+pg);
 		return modelAndView;
 	}
+	
 	// qna 댓글 등록하기
 	@Transactional
 	@RequestMapping(value="/qna/qnaComment")
