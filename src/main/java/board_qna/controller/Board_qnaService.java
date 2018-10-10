@@ -25,4 +25,5 @@ public interface Board_qnaService {
 	public int insert_reSeq(Board_qnaDTO board_qnaDTO);
 	//댓글 삭제
 	public int deleteQna_reply(int board_qna_ref);
+	
 }

@@ -63,5 +63,6 @@ public class Board_qnaServiceImpl implements Board_qnaService {
 	public int deleteQna_reply(int board_qna_ref) {
 		return board_qnaDAO.deleteQna_reply(board_qna_ref);
 	}
+	
 
 }

@@ -17,7 +17,6 @@ public class Board_qnaDTO {
 	private String prev_qna_subject;
 	
 	
-	
 	public int getNext_qna_seq() {
 		return next_qna_seq;
 	}

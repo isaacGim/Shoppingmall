@@ -90,6 +90,7 @@ public class Board_qnaController {
 		modelAndView.setViewName("/main/index.jsp?req=qnaWrite");
 		return modelAndView;
 	}
+	
 	// qna 보기
 	@RequestMapping(value="/qna/qnaView")
 	public ModelAndView qnaView(HttpServletRequest request, ModelAndView modelAndView) {

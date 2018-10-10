@@ -66,4 +66,5 @@ public class Board_qnaDAO { // qna
 	public int insert_reSeq(Board_qnaDTO board_qnaDTO) {
 		return sqlSession.insert("mybatis.board.insertQna_reSeq", board_qnaDTO);
 	}
+	
 }

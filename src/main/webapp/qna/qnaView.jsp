@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/board.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
 <script type="text/javascript">
+
 //commentWrite 버튼 클릭시 이동 
 $(function(){
 	// 댓글 등록
