@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>notice write form</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/bg.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
 <script type="text/javascript">
 	//저장버튼 클릭시 form 전송

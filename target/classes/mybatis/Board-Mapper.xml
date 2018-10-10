@@ -45,7 +45,12 @@
 	
 	<!-- 공지사항 글 상세보기 -->
 	<select id="noticeView" parameterType="int" resultType="noticeDTO">
-		SELECT * FROM notice WHERE notice_num=#{notice_num}
+		<![CDATA[SELECT * FROM (SELECT notice_num, notice_subject, notice_content, notice_writer, notice_hit, notice_date,
+      	LEAD(notice_num,1) OVER(ORDER BY notice_num) NEXT_notice_SEQ,
+      	LEAD(notice_subject,1) OVER(ORDER BY notice_num) NEXT_notice_SUBJECT,
+     	Lag(notice_num,1) OVER(ORDER BY notice_num) PREV_notice_SEQ,
+     	Lag(notice_subject,1) OVER(ORDER BY notice_num) PREV_notice_SUBJECT
+		FROM notice) WHERE notice_num = #{notice_num}]]>
 	</select>
 	
 	<!-- 공지사항 총 글 수  얻어오기-->	
@@ -118,7 +123,12 @@
 
 	<!-- Q&A 글 상세보기 -->
 	<select id="qnaView" parameterType="int" resultType="board_qnaDTO">
-		SELECT * FROM board_qna WHERE board_qna_num=#{board_qna_num}
+		<![CDATA[SELECT * FROM (SELECT board_qna_num, board_qna_subject, board_qna_content, board_qna_img, board_qna_writer, board_qna_ref, board_qna_lev, board_qna_seq,board_qna_date,
+     	LEAD(board_qna_num,1) OVER(ORDER BY board_qna_num) NEXT_QNA_SEQ,
+      	LEAD(board_qna_subject,1) OVER(ORDER BY board_qna_num) NEXT_QNA_SUBJECT,
+      	Lag(board_qna_num,1) OVER(ORDER BY board_qna_num) PREV_QNA_SEQ,
+      	Lag(board_qna_subject,1) OVER(ORDER BY board_qna_num) PREV_QNA_SUBJECT
+		FROM board_qna) WHERE board_qna_num =#{board_qna_num}]]> 
 	</select>
 	
 	<!-- Q&A 총 글 수  얻어오기-->	

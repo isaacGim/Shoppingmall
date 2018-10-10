@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>NOTICE View</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/bg.css">
+<link rel="stylesheet" type="text/css" href="../css/board.css">
 <link rel="stylesheet" type="text/css" href="../font/fonts.css">
 <script type="text/javascript">
 	//commentWrite 버튼 클릭시 이동 
@@ -15,15 +15,15 @@
 		$(".commentWrite").click(function() {
 			location.href = "/Project2/main/index.jsp?req=qnaView";
 		});
-		// 이전 글
+		
 		$(".prev").click(function() {
-			var num = ${prevNoticeDTO.notice_num };
-			location.href = "/Shoppingmall/notice/noticeView?no="+ num +"&pg=1";
+			var prevNum = ${noticeDTO.prev_notice_seq };
+			location.href = "/Shoppingmall/notice/noticeView?no="+ prevNum +"&pg="+${pg};
 		});
-		// 다음 글
+		
 		$(".next").click(function() {
-			var num = ${nextNoticeDTO.notice_num };
-			location.href = "/Shoppingmall/notice/noticeView?no="+ num +"&pg=1";
+			var nextNum = ${noticeDTO.next_notice_seq };
+			location.href = "/Shoppingmall/notice/noticeView?no="+ nextNum +"&pg="+${pg};
 		});
 	});
 </script>
@@ -33,7 +33,7 @@
 	<div class="example">
 		<p style="text-align:right;"><a href="../main/index.jsp">HOME</a> > NOTICE</p>
 		<!-- 게시판 제목이 출력될 곳 -->
-		<div class="title">
+		<div class="board_title">
 			<p>NOTICE</p>
 			<hr class="titleHr">
 			<p>리멤버클릭 공지사항</p>
@@ -70,18 +70,18 @@
 		
 		<div class="movement">
 			<ul>
-				<c:if test="${prevNoticeDTO.notice_subject != null }">
+				<c:if test="${noticeDTO.prev_notice_subject != null }">
 					<li class="prev"><strong>이전글</strong>
-					<a href="#none">${prevNoticeDTO.notice_subject }</a></li>
+					<a href="#none">${noticeDTO.prev_notice_subject }</a></li>
 				</c:if>
-				
-				<c:if test="${nextNoticeDTO.notice_subject != null }">
+				<c:if test="${noticeDTO.next_notice_subject != null }">
 					<li class="next"><strong>다음글</strong>
-					<a class="next">${nextNoticeDTO.notice_subject}</a></li>
+					<a href="#none">${noticeDTO.next_notice_subject }</a></li>
 				</c:if>
 				
 			</ul>
 		</div>
+		
 	</div>
 
 </body>

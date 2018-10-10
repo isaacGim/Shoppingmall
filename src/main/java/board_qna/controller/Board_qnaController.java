@@ -120,7 +120,7 @@ public class Board_qnaController {
 		board_qnaService.deleteQna(num);
 		board_qnaService.deleteQna_reply(ref);
 		
-		modelAndView.setViewName("/qna/qnaList?pg="+pg);
+		modelAndView.setViewName("redirect:/qna/qnaList?pg="+pg);
 		return modelAndView;
 	}
 	// qna 댓글 등록하기
@@ -134,22 +134,12 @@ public class Board_qnaController {
 		String comment = request.getParameter("comment");
 		String board_qna_writer = request.getParameter("board_qna_writer");
 		
-		System.out.println("comment=" + comment);
-		
 		String str_no = request.getParameter("no");
-		String str_no1 = request.getParameter("no1");
 		
 		// 원글 DTO를 가져온다.
 		if ( str_no != null ) {
 			int no = Integer.parseInt(str_no);
 			board_qnaDTO = board_qnaService.qnaView(no);
-			modelAndView.setViewName("redirect:/qna/qnaView?no=" + no + "&pg=" + pg);
-		}
-		
-		if ( str_no1 != null ) {
-			int no1 = Integer.parseInt(str_no1);
-			board_qnaDTO = board_qnaService.qnaView(no1);
-			modelAndView.setViewName("redirect:/qna/qnaView?no=" + no1 + "&pg=" + pg);
 		}
 
 		
@@ -172,10 +162,7 @@ public class Board_qnaController {
 		re_board_qnaDTO.setBoard_qna_lev(re_lev);
 		re_board_qnaDTO.setBoard_qna_seq(re_seq);
 		board_qnaService.insert_reSeq(re_board_qnaDTO);
-		//정렬한 댓글들 리스트 가져오기
-		List<Board_qnaDTO> list = board_qnaService.re_qnaList(ref);		
-		modelAndView.addObject("list", list);
-		
+		modelAndView.setViewName("redirect:/qna/qnaView?no=" + ref + "&pg=" + pg);
 		
 		return modelAndView;
 	}

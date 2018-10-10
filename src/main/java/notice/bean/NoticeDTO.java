@@ -7,6 +7,37 @@ public class NoticeDTO {
 	private String notice_writer;	// 작성자
 	private int notice_hit;			// 조회수 hit
 	private String notice_date;		// 작성일
+	private int next_notice_seq;
+	private int prev_notice_seq;
+	private String next_notice_subject;
+	private String prev_notice_subject;
+	
+	
+	
+	public int getNext_notice_seq() {
+		return next_notice_seq;
+	}
+	public void setNext_notice_seq(int next_notice_seq) {
+		this.next_notice_seq = next_notice_seq;
+	}
+	public int getPrev_notice_seq() {
+		return prev_notice_seq;
+	}
+	public void setPrev_notice_seq(int prev_notice_seq) {
+		this.prev_notice_seq = prev_notice_seq;
+	}
+	public String getNext_notice_subject() {
+		return next_notice_subject;
+	}
+	public void setNext_notice_subject(String next_notice_subject) {
+		this.next_notice_subject = next_notice_subject;
+	}
+	public String getPrev_notice_subject() {
+		return prev_notice_subject;
+	}
+	public void setPrev_notice_subject(String prev_notice_subject) {
+		this.prev_notice_subject = prev_notice_subject;
+	}
 	public int getNotice_num() {
 		return notice_num;
 	}
